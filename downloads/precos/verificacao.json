@@ -1,0 +1,38 @@
+{
+  "file": "mapa-preco-modelo-publico.xlsm",
+  "sha256": "74c58ea696b339645c192e94285aae3a336c127599310bf7cc5a9dfbedc38c37",
+  "sheets": 1,
+  "formulas_preserved": 40,
+  "merged_ranges_preserved": 167,
+  "conditional_rules_preserved": 2,
+  "style_xml_identical": true,
+  "formula_xml_and_caches_identical": true,
+  "xlsx_conversion": false,
+  "macro_enabled_content_type_preserved": true,
+  "vba_project_present": false,
+  "external_links_present": false,
+  "hidden_sheets_present": false,
+  "errors_cached_and_preserved": 28,
+  "changed_package_parts": [
+    "docProps/core.xml",
+    "xl/worksheets/sheet1.xml",
+    "xl/sharedStrings.xml",
+    "[Content_Types].xml"
+  ],
+  "removed_institutional_drawing_parts": [
+    "xl/drawings/_rels/drawing1.xml.rels",
+    "xl/drawings/drawing1.xml",
+    "xl/media/image1.jpeg",
+    "xl/worksheets/_rels/sheet1.xml.rels"
+  ],
+  "sanitized_text_cells": [
+    "B1",
+    "B4",
+    "C4",
+    "E4",
+    "M35",
+    "M4"
+  ],
+  "privacy_scan": "Passed for original identifiers, institution, embedded image and personal creator metadata",
+  "native_excel_execution": "Not performed"
+}
