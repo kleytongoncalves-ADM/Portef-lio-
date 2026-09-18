@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { content } from '../assets/content.mjs';
 import { ui } from '../assets/ui.mjs';
+import { downloads } from '../assets/downloads.mjs';
 import { EXAMPLE_DATA } from '../modules/demos.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -58,7 +59,7 @@ test('all static local links, image paths and ES module imports resolve', async 
     for (const match of source.matchAll(/(?:from\s*|import\s*\()(['"])(\.{1,2}\/[^'"]+)\1/g)) refs.push({ target: match[2], base: path.posix.dirname(file) });
     if (file.endsWith('.md')) for (const match of source.matchAll(/\]\(([^\s)]+)(?:\s+[^)]*)?\)/g)) refs.push({ target: match[1], base: path.posix.dirname(file) });
     for (const { target, base } of refs) {
-      if (target.includes('${') || /^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(target)) continue;
+      if (target.includes('${') || /^\$\d+$/.test(target) || /^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(target)) continue;
       const pathname = target.split(/[?#]/)[0];
       if (!pathname) continue;
       const local = path.posix.normalize(path.posix.join(base, decodeURIComponent(pathname)));
@@ -66,6 +67,20 @@ test('all static local links, image paths and ES module imports resolve', async 
     }
   }
   assert.deepEqual(failures, [], 'Every advertised local file must exist');
+});
+
+test('all five project download buttons target real ZIP files, with complete connected sets', async () => {
+  assert.deepEqual(Object.keys(downloads).sort(), Object.keys(routes).sort());
+  for (const [module, file] of Object.entries(downloads)) {
+    const bytes = await readFile(path.join(root, file.package));
+    assert.equal(bytes.subarray(0, 4).toString('hex'), '504b0304', `${module}: download must be a ZIP archive`);
+    assert.ok(bytes.length > 1000, `${module}: empty or placeholder package`);
+    if (module !== 'precos') {
+      assert.equal(file.format, 'google-sheets');
+      assert.equal(file.components, ['facilities', 'estacionamento'].includes(module) ? 4 : 3);
+      assert.ok((await read(`docs/${module}.md`)).includes(file.package));
+    }
+  }
 });
 
 test('language dictionaries contain the same UI keys and complete translated project fields', () => {
@@ -89,7 +104,7 @@ test('language dictionaries contain the same UI keys and complete translated pro
 test('public files contain no source Drive links, spreadsheet credentials or raw uploaded originals', async () => {
   const files = await publicFiles();
   const forbiddenName = /(?:Kleyton-Goncalves-Silva-Curriculo\(1\)\.pdf|texto.colado|MODELO COMPARATIVO|\.env(?:\.|$))/i;
-  const forbiddenText = /https?:\/\/(?:docs\.google\.com\/spreadsheets\/d\/|drive\.google\.com\/(?:drive\/folders|file\/d)\/)|(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{40,}|AIza[0-9A-Za-z_-]{30,})/;
+  const forbiddenText = /https?:\/\/(?:docs\.google\.com\/spreadsheets\/d\/|drive\.google\.com\/(?:drive\/folders|file\/d)\/)(?!__)[A-Za-z0-9_-]{25,}|(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{40,}|AIza[0-9A-Za-z_-]{30,})/;
   const problems = [];
   for (const file of files) {
     if (forbiddenName.test(path.basename(file))) problems.push(`Potential original/private artifact: ${file}`);

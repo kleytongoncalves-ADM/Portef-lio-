@@ -33,6 +33,11 @@ Para um conjunto nativo disponibilizado: copie os componentes para sua conta, re
 
 As planilhas ficam em português. As exportações Excel inspecionadas apresentaram fórmulas convertidas para funções de compatibilidade sem cálculo equivalente; por isso, não são oferecidas como sistema utilizável. Foram encontrados trechos estáticos de vigências na base original; uma indicação de conexão ativa não comprova atualização integral. O projeto não contém controle confirmado de execução física, medições de engenharia nem automação específica de repactuação.
 
+
+### Baixar e instalar o modelo
+
+[Baixar o pacote completo para Google Planilhas](../downloads/facilities/facilities-pacote-google-planilhas.zip). O ZIP contém cópias derivadas das planilhas originais, dados fictícios, manifesto de restauração e instalador. Siga `INSTALACAO-PT.md` dentro do pacote: importe todos os componentes, execute a configuração e autorize as conexões entre suas próprias cópias. Os arquivos XLSX servem como transporte para o Google Planilhas; não são apresentados como sistemas compatíveis com Excel.
+
 ## English
 
 ### Purpose
@@ -65,3 +70,7 @@ The native set requires **four files: area-specific payment source → contract 
 For a published native set: copy its components to your account, record your new copy identifiers, configure the area-specific payment source and its contract linkage first, update documented external references between the four copies, and authorize connections in the order payment source → operations → base → dashboards, then check a known example before adding your own data. Do not connect public copies to institutional sources.
 
 Spreadsheets remain in Portuguese. The inspected Excel exports contained formulas converted to compatibility functions without equivalent calculation, so they are not offered as usable systems. Some contract-term source data was static; an active connection does not prove complete synchronization. The project has no confirmed physical construction-progress control, engineering measurement workflow or dedicated automated price-adjustment workflow.
+
+### Download and install the model
+
+[Download the complete Google Sheets package](../downloads/facilities/facilities-pacote-google-planilhas.zip). The ZIP includes copies derived from the original spreadsheets, fictional data, a restoration manifest and setup script. Follow `INSTALLATION-EN.md` inside the package: import every component, run setup and authorize connections between your own copies. The XLSX files transport the models into Google Sheets; they are not presented as Excel-compatible systems.

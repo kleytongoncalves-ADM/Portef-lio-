@@ -1,0 +1,59 @@
+{
+  "module": "estacionamento",
+  "nativeGoogleImports": 4,
+  "sourceFaithfulness": {
+    "retainedSheets": 80,
+    "dashboardCharts": 14,
+    "cellStylesIdentical": true,
+    "mergesPreserved": true,
+    "conditionalRulesPreserved": true,
+    "validationRulesPreserved": true,
+    "transportProtectionsPreserved": true
+  },
+  "nativeEngineChecks": {
+    "fixtureContractCount": 8,
+    "contractValue": 105600,
+    "amendedValue": 106800,
+    "currentAggregateBalance": 54000,
+    "servicePostedSixMonths": 52800,
+    "firstServiceBalance": 3600,
+    "firstServiceProjectedBalance": 1200,
+    "emptyRiskDisplayChecked": true,
+    "supplementaryFormulaRecalculatedAfterInstaller": true
+  },
+  "privacy": {
+    "originalFileIdsRemoved": true,
+    "originalNamesDocumentsBankDataRemoved": true,
+    "oldCachedChartDataRemoved": true,
+    "review": "independent OOXML, formula and manifest review",
+    "finalCorrectionsIndependentlyVerified": true
+  },
+  "limitations": [
+    "Full live IMPORTRANGE authorization was not available; controlled fictional snapshots were used in disposable copies for engine checks.",
+    "Original bound Apps Script and triggers were not inspectable or exportable.",
+    "Native sharing, protected-range editor lists and connector authorizations are not inherited by XLSX transport.",
+    "All installer steps and end-to-end recalculation must be completed in the destination Google account."
+  ],
+  "nativeInstallationChecks": {
+    "exactInstallerBatchesApplied": 80,
+    "additionalMergeRestorationBatchesApplied": 1,
+    "nativeSheetCount": 80,
+    "nativeCharts": 14,
+    "nativeMergesByComponent": {
+      "op": 179,
+      "aux": 27,
+      "dash": 5956,
+      "extra": 35
+    },
+    "nativeConditionalRulesByComponent": {
+      "op": 1409,
+      "aux": 93,
+      "dash": 79,
+      "extra": 9
+    },
+    "nativeValidationRulesSampled": 16,
+    "gridNamesVisibilityVerifiedSheets": 80,
+    "chartFormattingRequiresLoadedData": true,
+    "liveImportAuthorization": "not available in validation browser"
+  }
+}

@@ -1,21 +1,25 @@
-# Modelos nativos de frota / Native fleet models
+# Modelos de Frota / Fleet models
 
 ## Português
 
-Foram preparadas três cópias privadas em Google Planilhas: entrada operacional, cálculos auxiliares e painéis. A estrutura conserva 26 abas, as fórmulas e os gráficos existentes.
+O pacote completo contém três arquivos derivados das planilhas originais: operacional, auxiliares e painéis. O download inclui os XLSX de transporte, manifesto de restauração, instalador e guias em português e inglês. As 26 abas e os 10 gráficos pertencem à estrutura de origem; as entradas são fictícias.
 
-Os lançamentos, veículos, condutores, cartões, estabelecimentos e decisões de duplicidade foram substituídos por um cenário demonstrativo com dados fictícios. As conexões entre arquivos apontam para as cópias demonstrativas. Os arquivos operacionais de referência não foram alterados.
+Siga `INSTALACAO-PT.md` dentro do ZIP para importar os arquivos no Google Planilhas, restaurar fórmulas e propriedades e autorizar as conexões entre suas cópias. Não é um pacote para executar no Microsoft Excel.
 
-Os modelos ainda não estão disponíveis para download público. A liberação depende de concluir a conexão e a verificação dos cálculos no Google Planilhas, a auditoria final dos arquivos e a inspeção de eventuais projetos de Apps Script vinculados. A exportação para XLSX não comprova compatibilidade com Excel: funções nativas e conexões do Google Planilhas precisam do mecanismo original.
+Nos testes nativos com dados fictícios, os 1.339 registros totalizaram R$ 247.728,20. A conferência de duplicidades encontrou seis ocorrências em três grupos, somando R$ 1.079,20 em análise. As regras de consumo e quilometragem foram conferidas no operacional, nos auxiliares e nos painéis. O relatório dentro do pacote discrimina a restauração e os testes.
 
-A demonstração web é uma adaptação interativa de regras documentadas, com dados fictícios. Ela não substitui a cópia integral do motor de validação de hodômetros.
+A validação das camadas de cálculo usou entradas temporárias de teste nas cópias de teste; as fórmulas de importação foram restauradas ao final. A autorização de IMPORTRANGE precisa ser feita na conta de quem instalar. Depois do recálculo, execute `restaurarGraficos` para reaplicar os estilos das séries com dados disponíveis. O instalador não concede essa autorização e sua conclusão não certifica o recálculo. Scripts vinculados e gatilhos da origem não são incluídos.
+
+[Baixar pacote completo](../downloads/frota/frota-pacote-google-planilhas.zip).
 
 ## English
 
-Three private native Google Sheets copies have been prepared: operational inputs, supporting calculations and dashboards. The structure retains 26 tabs, existing formulas and charts.
+The complete package contains three workbooks derived from the originals: operations, supporting calculations and dashboards. It includes XLSX transport files, a restoration manifest, setup script and bilingual instructions. The 26 tabs and 10 charts come from the source structure; the entries are fictional.
 
-Transactions, vehicles, drivers, cards, suppliers and duplicate-case decisions have been replaced with fictional demonstration data. Cross-file connections point to the demonstration copies. The operational reference files have not been modified.
+Follow `INSTALLATION-EN.md` inside the ZIP to import the files into Google Sheets, restore formulas and properties, and authorize connections between your copies. This is not a package for execution in Microsoft Excel.
 
-The models are not yet available as public downloads. Release requires completing native connections and calculation checks, the final file audit and inspection of any bound Apps Script projects. An XLSX export does not establish Excel compatibility: native Google Sheets functions and connections require their original engine.
+Native tests with fictional data produced 1,339 records and R$247,728.20 in total expenditure. Duplicate review found six entries in three groups, with R$1,079.20 under review. Consumption and mileage rules were checked in operations, supporting calculations and dashboards. The package report describes restoration and testing.
 
-The web demonstration is an interactive adaptation of documented rules using fictional data. It does not reproduce the complete odometer-validation engine.
+Calculation-layer validation used temporary test inputs in test copies; import formulas were restored afterward. IMPORTRANGE authorization must be granted in the installer's own account. After recalculation, run `restaurarGraficos` to reapply series styling with data available. The setup script does not grant that authorization, and completion does not certify recalculation. Bound source scripts and triggers are not included.
+
+[Download complete package](../downloads/frota/frota-pacote-google-planilhas.zip).

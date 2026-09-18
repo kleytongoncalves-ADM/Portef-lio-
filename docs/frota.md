@@ -33,6 +33,11 @@ Para configurar cópias nativas: copie operacional, auxiliares e painéis; atual
 
 O original tem limites diferentes de linhas por motor e painel, além de intervalos fixos de cadastro e anos. Uma etiqueta de capacidade ou conexão saudável não garante processamento integral. Arquivos em português; não há compatibilidade Excel verificada, geolocalização ao vivo ou manutenção preventiva confirmada no conjunto inspecionado.
 
+
+### Baixar e instalar o modelo
+
+[Baixar o pacote completo para Google Planilhas](../downloads/frota/frota-pacote-google-planilhas.zip). O ZIP contém cópias derivadas das planilhas originais, dados fictícios, manifesto de restauração e instalador. Siga `INSTALACAO-PT.md` dentro do pacote: importe todos os componentes, execute a configuração e autorize as conexões entre suas próprias cópias. Os arquivos XLSX servem como transporte para o Google Planilhas; não são apresentados como sistemas compatíveis com Excel.
+
 ## English
 
 ### Purpose and components
@@ -65,3 +70,7 @@ A usable set requires all three files, the vehicle register and the decision log
 To configure native copies: copy operations, supporting calculations and dashboards; update **all** external references, including references outside the connection tabs; authorize operations → supporting calculations → dashboards; check fuel consumption, washing, repeated entries, credits, regressions and an interval crossing the first day of a month.
 
 The original has different row limits by calculation engine and dashboard, plus fixed vehicle and year ranges. A capacity label or healthy connection does not establish complete processing. Files are in Portuguese. Excel compatibility, live geolocation and preventive-maintenance functionality were not confirmed for the inspected set.
+
+### Download and install the model
+
+[Download the complete Google Sheets package](../downloads/frota/frota-pacote-google-planilhas.zip). The ZIP includes copies derived from the original spreadsheets, fictional data, a restoration manifest and setup script. Follow `INSTALLATION-EN.md` inside the package: import every component, run setup and authorize connections between your own copies. The XLSX files transport the models into Google Sheets; they are not presented as Excel-compatible systems.

@@ -1,0 +1,194 @@
+{
+  "moduleId": "frota",
+  "verifiedAtUtc": "2026-09-18T19:06:50.213049+00:00",
+  "targetPlatform": "Google Sheets",
+  "xlsxPurpose": "transport-only; native import and restoration required",
+  "sourceFilesEdited": false,
+  "usesPrivateSourceIds": false,
+  "components": [
+    {
+      "key": "operacional",
+      "sheets": 3,
+      "gridCells": 3157042,
+      "restoredNativeFormulaCells": 26
+    },
+    {
+      "key": "auxiliares",
+      "sheets": 14,
+      "gridCells": 7080889,
+      "restoredNativeFormulaCells": 13978
+    },
+    {
+      "key": "paineis",
+      "sheets": 9,
+      "gridCells": 3663971,
+      "restoredNativeFormulaCells": 64
+    }
+  ],
+  "features": {
+    "charts": 10,
+    "chartsComparedWithPopulatedSyntheticRanges": 10,
+    "chartsStructurallyIdenticalAfterIdMapping": 9,
+    "chartsWithDefaultBlackNormalizationOnly": 1,
+    "validationRules": 30,
+    "validationSentinelsSemanticallyMatched": 30,
+    "validationOwnSheetQualificationNormalizations": 3,
+    "conditionalFormattingRules": 28,
+    "conditionalRangesNormalizedToExisting1000Rows": 3,
+    "mergedRanges": 243,
+    "tables": 2,
+    "bandedRanges": 2,
+    "basicFilters": 2,
+    "protectedRanges": 0,
+    "filterViews": 0,
+    "sheetOrderGridFreezeAndVisibilityChecked": true,
+    "navigationChange": "Dashboard CONEXÕES tab remains visible for setup."
+  },
+  "nativeTests": {
+    "fictionalRecords": 1339,
+    "fictionalVehicles": 83,
+    "financialTotalBRL": 247728.2,
+    "pendingFinancial": {
+      "records": 6,
+      "groups": 3,
+      "amountBRL": 1079.2
+    },
+    "inputCellsMatched": 38831,
+    "roundTripValuesMatched": 64272,
+    "newRowExpansionDerivedColumns": 19,
+    "consumptionAlerts": {
+      "low": 241,
+      "high": 1,
+      "checkOdometer": 9
+    },
+    "washingServices": 3,
+    "kmEngineRows": {
+      "valid": 1332,
+      "suspectAwaitingConfirmation": 4,
+      "anomalous": 3
+    },
+    "dashboardAnnualKm": 561530,
+    "dashboardOwnAndRentedVehicles": 75,
+    "syntheticFeedsRestoredAfterTests": true,
+    "fullChartRequestsReappliedWithData": 30
+  },
+  "limits": {
+    "liveImportRangeAuthorizationTested": false,
+    "manualImportRangeAuthorizationRequired": true,
+    "runRestaurarGraficosAfterRecalculation": true,
+    "sourceBoundScriptsIncluded": false,
+    "sourceBoundScriptsAudited": false,
+    "pixelComparisonPerformed": false,
+    "excelCompatibilityCertified": false,
+    "completeInstallerAuthorizationFlowInNewUserAccountTested": false
+  },
+  "privacy": {
+    "knownPrivatePatternsChecked": 13802,
+    "knownPrivateMatches": 0,
+    "institutionLabelsInWorkbookDataSubstituted": true,
+    "notesHiddenTabsValidationsAndFormulaStringsIncludedInScan": true,
+    "decodedDummyFunctionArgumentsChecked": true,
+    "privateGoogleIdFragmentsChecked": 330,
+    "privateUrlPrefixMinimumIdCharacters": 8,
+    "logicalFormulaComparisons": {
+      "op": {
+        "formulaNodesCompared": 3574,
+        "dummyFunctionArgumentsDecoded": 1548,
+        "sanitizedArguments": 0,
+        "logicalFormulaDifferencesBeyondSanitization": 0,
+        "knownPrivateMatchesInXmlAndDecodedFormulas": 0,
+        "privateUrlPrefixesAndIdFragmentMatches": 0
+      },
+      "aux": {
+        "formulaNodesCompared": 163770,
+        "dummyFunctionArgumentsDecoded": 59155,
+        "sanitizedArguments": 16,
+        "logicalFormulaDifferencesBeyondSanitization": 0,
+        "knownPrivateMatchesInXmlAndDecodedFormulas": 0,
+        "privateUrlPrefixesAndIdFragmentMatches": 0
+      },
+      "dash": {
+        "formulaNodesCompared": 346,
+        "dummyFunctionArgumentsDecoded": 61,
+        "sanitizedArguments": 18,
+        "logicalFormulaDifferencesBeyondSanitization": 0,
+        "knownPrivateMatchesInXmlAndDecodedFormulas": 0,
+        "privateUrlPrefixesAndIdFragmentMatches": 0
+      }
+    }
+  },
+  "files": {
+    "ConfigurarModelos.gs": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [
+        "Public module acronym GEIN in generic installer comment."
+      ],
+      "xmlPartsScanned": 0,
+      "embeddedMediaCount": 0,
+      "sha256": "819ee95fc50811adc8fe31b14150fdd131942f34e06b857d940b5c583f2d1cdc"
+    },
+    "INSTALACAO-PT.md": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [],
+      "xmlPartsScanned": 0,
+      "embeddedMediaCount": 0,
+      "sha256": "30d3bca5babfbd34a2901ba53df0226c7a01b1081163e474a0ef4fef77a0e2b8"
+    },
+    "INSTALLATION-EN.md": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [],
+      "xmlPartsScanned": 0,
+      "embeddedMediaCount": 0,
+      "sha256": "01f5123b5c412637a9b5cf930be76dee5125baae61155466d590cdd74f988283"
+    },
+    "LEIA-ME-FROTA.md": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [],
+      "xmlPartsScanned": 0,
+      "embeddedMediaCount": 0,
+      "sha256": "f1104da58d0514ef80c60d17399e20970181a4fd8e53201d472c6a0344f7ee8d"
+    },
+    "MODELO-PUBLICO-FROTA-AUXILIARES.xlsx": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [],
+      "xmlPartsScanned": 64,
+      "embeddedMediaCount": 0,
+      "sha256": "4a21c54dff4fd91eb8199a5658898d7abe1ca49ebde6348ddb373684cc9c5119"
+    },
+    "MODELO-PUBLICO-FROTA-OPERACIONAL.xlsx": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [],
+      "xmlPartsScanned": 22,
+      "embeddedMediaCount": 0,
+      "sha256": "57d8055ab8fe413ecee3d5b6620cdefb5c0764870d26afc2269b6e9b74b9e1ea"
+    },
+    "MODELO-PUBLICO-FROTA-PAINEIS.xlsx": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [],
+      "xmlPartsScanned": 59,
+      "embeddedMediaCount": 0,
+      "sha256": "d98634293a34863e58bfa7b36282484bd7405a426590cd0d5d61f68834a6022c"
+    },
+    "VERIFICACAO-FROTA.md": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [],
+      "xmlPartsScanned": 0,
+      "embeddedMediaCount": 0,
+      "sha256": "be7fbcc1675961c4c4edce908e591c782b918eeb60a16d49bd22ebdcec9237ae"
+    },
+    "appsscript.json": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [],
+      "xmlPartsScanned": 0,
+      "embeddedMediaCount": 0,
+      "sha256": "f5dbef0583ff08a13d4942f5f991ef8e805480e0391797419e3c67b08aeaf7c6"
+    },
+    "manifesto-frota.json": {
+      "knownPrivateMatches": 0,
+      "publicLabelExceptions": [],
+      "xmlPartsScanned": 0,
+      "embeddedMediaCount": 0,
+      "sha256": "3b5cffd634d7849e909dc9ad012f3505c51549eb44af6eb2f7509f0bd11232b6"
+    }
+  }
+}

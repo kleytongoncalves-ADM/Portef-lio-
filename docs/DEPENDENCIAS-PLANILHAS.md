@@ -1,6 +1,6 @@
 # Dependências e utilização das planilhas
 
-**Situação em 18/09/2026:** a estrutura e as regras principais foram inspecionadas. Os modelos nativos de contratos, imóveis e estacionamento ainda não estão liberados como pacotes públicos. As demonstrações do site usam dados fictícios e funcionam de forma independente.
+**Situação em 18/09/2026:** a estrutura e as regras principais foram inspecionadas. Os downloads são pacotes para importação e restauração no Google Planilhas, com dados fictícios e referências configuradas na conta do visitante. As demonstrações do site usam dados fictícios e funcionam de forma independente.
 
 ## Mapa por assunto
 
@@ -36,7 +36,7 @@ A base auxiliar é uma camada técnica. Não constitui um sexto projeto. Os tema
 - AUX MOVIMENTAÇÕES PAGAMENTOS e AUX MOVIMENTAÇÕES ADITIVOS.
 - AUX PAINEL CONTRATOS, AUX RISCO INSUFICIÊNCIA e AUX RENOVAÇÃO CONTRATUAL.
 - AUX PAGAMENTOS EM ATRASO, PENDÊNCIAS DA FONTE e controles de sincronização/validação.
-- Existem cópias estáticas de contingência que também precisam ser revisadas antes da distribuição.
+- As cópias estáticas de contingência foram consideradas na sanitização; consulte o relatório do pacote para as adaptações dessas camadas.
 
 **Painéis**
 
@@ -81,11 +81,11 @@ A fonte complementar contém quantidades de vagas e um registro sem contrato loc
 
 Os dados de estacionamento são retirados dos totais de Obras e Facilities no portfólio. Uma empresa com dois contratos continua com dois identificadores. Imóveis se relacionam por identidade cadastral/contratual e local, preservando a composição aluguel, condomínio, IPTU e taxas.
 
-## Ordem de configuração das futuras cópias
+## Ordem de configuração das cópias
 
-Estas instruções documentam o fluxo. Elas **não significam que os modelos públicos já estejam disponíveis**.
+Baixe o ZIP completo do módulo e siga `INSTALACAO-PT.md`. O instalador configura as referências entre os componentes informados por você; a autorização de acesso continua sendo feita no Google Planilhas.
 
-1. Crie uma pasta própria no Google Drive e faça uma cópia de cada componente do mesmo pacote.
+1. Crie uma pasta própria no Google Drive, importe cada XLSX do pacote como Google Planilhas e execute o instalador incluído.
 2. Para Obras e Estacionamento, configure primeiro a fonte complementar temática. Confira processos, contratos, vagas e status do vínculo.
 3. Abra a operacional temática. Cadastre identidade, objeto, vigências, valores e a separação de naturezas. Registre movimentações nas competências corretas.
 4. Abra a base auxiliar e aponte os parâmetros e as referências externas para as cópias criadas na sua conta.
@@ -97,30 +97,19 @@ Estas instruções documentam o fluxo. Elas **não significam que os modelos pú
 
 Nas fontes inspecionadas, parte da camada de vigências usa valores fixos. A indicação de conexão ou uma hora de recálculo não comprova que toda a base se atualizou. Essa limitação precisa permanecer visível até ser tratada em uma adaptação documentada.
 
-## Condições para liberar “Abrir modelo” e “Fazer uma cópia”
+## Distribuição e verificação
 
-| Verificação | Situação desta entrega |
-| --- | --- |
-| Origem e estrutura dos três temas | Inspecionadas. |
-| Fórmulas de saldos, ciclos, lançamentos, renovações e risco | Inspecionadas em pontos relevantes; dependências externas localizadas. |
-| Fórmulas e recursos no arquivo exportado | Inspeção estrutural realizada; detectadas incompatibilidades Excel. |
-| Cópias nativas públicas completas por tema | Ainda não liberadas. |
-| Fonte complementar recortada com vínculo funcional | Pendente. |
-| Remoção/anonimização de entradas, bancos, pessoas, endereços, documentos e identificadores reais | Pendente nas cópias nativas dos três temas. |
-| Revisão de abas ocultas, snapshots, comentários e caches | Pendente nas cópias nativas dos três temas. |
-| Revisão de scripts vinculados e gatilhos | Não realizada: as ferramentas de Drive/Sheets disponíveis não expõem o código dos projetos Apps Script vinculados. |
-| Preservação e verificação de proteções e permissões | Pendente de verificação nativa; a exportação não comprova preservação. |
-| Referências conectadas exclusivamente às novas cópias | Pendente. |
-| Recálculo com casos controlados no Google Sheets | Pendente. |
-| Acesso público das cópias sanitizadas | Pendente; nenhuma permissão dos originais foi alterada. |
+Os pacotes incluem a estrutura derivada das fontes, com entradas fictícias e manifesto de restauração. As fórmulas que exigem recursos nativos são restauradas como fórmulas pelo instalador. O relatório de cada pacote discrimina os resultados dos testes de importação e cálculo, os recursos preservados e as adaptações.
 
-A cópia de um arquivo nativo pode preservar conteúdo que não aparece nas abas visíveis. Ocultar uma aba, resolver um comentário ou trocar o título não remove dados do arquivo. A liberação pública depende da inspeção de todo o conteúdo das cópias.
+As fontes e suas permissões não foram alteradas. A distribuição usa ZIPs no repositório; não depende de tornar pública a conta Google do autor. As cópias importadas pelo visitante precisam da autorização normal de IMPORTRANGE. Essa autorização entre arquivos não foi automatizada nem é comprovada pelo estado `complete: true` do instalador.
+
+Projetos Apps Script vinculados, gatilhos e permissões originais não são transportados por XLSX e não fazem parte dos pacotes. Os testes documentados cobrem as funções de planilha descritas nos respectivos relatórios. Não se afirma preservação de automações de script não inspecionadas.
 
 ## Excel e downloads
 
 As exportações de contratos, base e painéis converteram diversas fórmulas para funções de compatibilidade `__xludf.DUMMYFUNCTION`. A exportação também altera nomes de abas para os limites do Excel. Um arquivo que abre mostrando valores em cache não demonstra cálculo funcional.
 
-Por isso, não são oferecidos esses XLSX como sistemas completos. O formato nativo do Google Sheets será priorizado. A planilha original de Mapa de Preço possui um fluxo próprio de compatibilidade e deve conservar seu formato necessário.
+Por isso, os XLSX são oferecidos dentro dos ZIPs como arquivos de transporte, acompanhados de restauração para Google Planilhas. Não são anunciados como sistemas para execução no Excel. A planilha original de Mapa de Preço possui um fluxo próprio de compatibilidade e deve conservar seu formato necessário.
 
 Os arquivos de código, guias e dados fictícios das demonstrações web podem ser distribuídos independentemente. Eles não substituem o pacote de planilhas.
 

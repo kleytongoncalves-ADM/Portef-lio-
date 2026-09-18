@@ -45,13 +45,25 @@ Referência oficial: [Configuração da origem de publicação](https://docs.git
 - **Site:** cinco páginas temáticas, apresentação profissional baseada no currículo, interface PT/EN, navegação contextual por mouse/teclado/toque e CSS responsivo com respeito a movimento reduzido.
 - **Demonstrações:** filtros, tabelas, indicadores e gráficos calculados sobre exemplos; edição, restauração e armazenamento na sessão. Nenhuma escrita nas fontes.
 - **Mapa de Preço:** modelo XLSM original sanitizado, ZIP, guias PT/EN, prévia e relatório. As fórmulas originais foram preservadas, inclusive inconsistências documentadas; requer revisão funcional antes de uso operacional.
-- **Frota nativa:** três cópias privadas preparadas com dados fictícios. As conexões e o recálculo final no Google Planilhas aguardam liberação no navegador; ver `docs/frota-modelos-status.md`.
-- **Demais planilhas nativas:** distribuição pública pendente. Fontes dependem de outros workbooks, dados internos e recursos cuja sanitização/execução completa ainda não foi certificada. Não são oferecidas exportações Excel com fórmulas quebradas como sistemas utilizáveis.
+- **Obras, Imóveis, Frota e Estacionamento:** pacotes ZIP derivados das fontes, com dados fictícios, arquivos de importação XLSX, manifesto de restauração, instalador e guias PT/EN. Exigem Google Planilhas, execução da configuração e autorização manual de IMPORTRANGE entre as cópias do visitante. Relatórios por pacote registram os testes e os limites.
+- **Instalador:** restaura fórmulas nativas, nomes de abas, dimensões e propriedades registradas no manifesto. Confere os arquivos antes de escrever e pode retomar lotes interrompidos. Scripts/gatilhos das fontes não são transportados.
 - **Guias:** `guia.html` exibe os arquivos de `docs/` no idioma selecionado. O download Markdown inclui as duas versões.
 
 Os demonstradores são adaptações explicativas, não réplicas integrais de todos os motores das planilhas. Limitações específicas ficam junto de cada painel e nos guias. Nenhum dado de instituição, contratado, veículo ou pessoa foi copiado para os exemplos.
 
 [Arquitetura](docs/architecture.md) · [Dependências das planilhas](docs/DEPENDENCIAS-PLANILHAS.md) · [Validação](docs/VALIDACAO.md)
+
+## Downloads por projeto
+
+| Projeto | Pacote completo |
+| --- | --- |
+| Obras e Facilities | [Baixar ZIP](downloads/facilities/facilities-pacote-google-planilhas.zip) |
+| Imóveis | [Baixar ZIP](downloads/imoveis/imoveis-pacote-google-planilhas.zip) |
+| Frota | [Baixar ZIP](downloads/frota/frota-pacote-google-planilhas.zip) |
+| Estacionamento | [Baixar ZIP](downloads/estacionamento/estacionamento-pacote-google-planilhas.zip) |
+| Mapa de Preço | [Baixar ZIP](downloads/precos/mapa-preco-pacote-publico.zip) |
+
+Nos quatro pacotes Google, leia `INSTALACAO-PT.md` antes de preencher dados. Os nomes e o visual partem dos modelos enviados; os XLSX são transportes para o Google Planilhas.
 
 ## Atualizar conteúdo
 
@@ -69,4 +81,4 @@ A troca de idioma não converte reais para outra moeda. Planilhas e nomes de aba
 
 A bilingual, dependency-free static portfolio with five distinct interactive demonstrations. Serve this directory over HTTP and run `npm test` to check calculation rules and file integrity. Enable GitHub Pages from `main` at the repository root, then use the deployment URL provided by GitHub.
 
-The price-comparison XLSM is a sanitized derivative of the original, with its formulas and documented issues preserved. Other native workbook packages are not yet publicly distributable: their dependencies, private data and runtime behavior require further validation. Web demonstrations are educational adaptations with fictional data, never a replacement for the original workbooks.
+The price-comparison XLSM is a sanitized derivative of the original, with its formulas and documented issues preserved. The other four projects include complete ZIP packages for import into Google Sheets, with fictional data, a restoration manifest, setup script and bilingual instructions. Initial setup and manual IMPORTRANGE authorization are required in the visitor’s account. These are not Excel-compatible systems. Each package documents its verification results and remaining limitations; bound source scripts and triggers are not transported. Web demonstrations are educational adaptations with fictional data, never a replacement for the original workbooks.

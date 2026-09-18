@@ -1,0 +1,72 @@
+{
+  "moduleId": "imoveis",
+  "format": "Google Sheets installation package",
+  "excelCompatibilityClaimed": false,
+  "nativeImportTested": true,
+  "restorationRequestsAppliedInNativeSheets": true,
+  "installerFinalPlanCompiled": true,
+  "nativeFormulaCellsCompared": 4705,
+  "configurationCellsCompared": 2,
+  "cellDifferences": 0,
+  "components": {
+    "operacional": {
+      "sheets": 6,
+      "formulasRestored": 0,
+      "requests": 1393,
+      "charts": 0,
+      "importCharts": 0,
+      "merges": 377,
+      "conditionalRules": 1012,
+      "protectedRanges": 0
+    },
+    "base": {
+      "sheets": 56,
+      "formulasRestored": 2766,
+      "requests": 354,
+      "charts": 0,
+      "importCharts": 0,
+      "merges": 27,
+      "conditionalRules": 93,
+      "protectedRanges": 0
+    },
+    "paineis": {
+      "sheets": 14,
+      "formulasRestored": 1939,
+      "requests": 1107,
+      "charts": 14,
+      "importCharts": 13,
+      "merges": 5956,
+      "conditionalRules": 79,
+      "protectedRanges": 0
+    }
+  },
+  "privacyScan": {
+    "privateIdentifiersChecked": 11,
+    "sourceIdentityTermsChecked": 192,
+    "matches": 0,
+    "externalPrivateLinks": 0
+  },
+  "fictionalFixture": {
+    "properties": 3,
+    "leases": 2,
+    "transactionsIncludingMissingAmount": 34,
+    "rentBRL": 19600,
+    "condominiumBRL": 6000,
+    "propertyTaxBRL": 2700,
+    "otherFeesBRL": 420,
+    "totalBRL": 28720,
+    "missingDueDateAnomalies": 1,
+    "amountAssociatedWithAnomalyBRL": 450
+  },
+  "remainingUserSteps": [
+    "Run Apps Script setup in your Google account",
+    "Authorize Operational to Base IMPORTRANGE",
+    "Authorize Base to Dashboards IMPORTRANGE",
+    "Wait for recalculation and verify guide totals",
+    "Run restaurarGraficos after the data loads to restore chart styling"
+  ],
+  "originalScriptsIncluded": false,
+  "originalPermissionsIncluded": false,
+  "pixelComparisonPerformed": false,
+  "documentedSourceFix": "Property monthly summary B19:F30 guards Q replaced by R; 60 formulas."
+}

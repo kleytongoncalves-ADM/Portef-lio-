@@ -31,9 +31,14 @@ Os exemplos não atribuem uma vaga a um contrato apenas porque seu objeto usa a 
 
 Um pacote nativo temático precisa de **quatro arquivos: fonte complementar temática de pagamentos → operacional recortada → base auxiliar → painel**. A fonte complementar, intitulada “2026 - Gestão de Pagamento de Energia, Água e Imóveis - CREA”, alimenta a operacional pelas abas **Estacionamentos** e **CONEXÃO GEIN**. Ela também contém quantidades de vagas e registros cuja vinculação contratual precisa de conferência. Um registro sem vínculo não entra automaticamente na contagem de contratos válidos. A separação deve preservar todos os ciclos, aditivos e movimentos ligados aos contratos escolhidos. Esses mesmos registros não podem voltar a ser somados no pacote de Obras e Facilities.
 
-O guia e a demonstração não substituem o conjunto nativo. Use somente arquivos que estiverem efetivamente disponíveis na área de downloads. Quando oferecido, copie o conjunto completo, ajuste as referências entre suas novas cópias e autorize as conexões na ordem fonte complementar → operacional → base → painel. Confira contratos distintos do mesmo fornecedor, casos sem quantidade de vagas e registros sem vínculo.
+O guia e a demonstração não substituem o conjunto nativo. Use somente arquivos que estiverem efetivamente disponíveis na área de downloads. Importe o conjunto completo e configure as referências entre suas novas cópias com o instalador e autorize as conexões na ordem fonte complementar → operacional → base → painel. Confira contratos distintos do mesmo fornecedor, casos sem quantidade de vagas e registros sem vínculo.
 
 Planilhas em português. O recorte exige referências próprias, sem conexão às fontes institucionais e sem outros contratos, pessoas ou documentos reais. Compatibilidade com Excel depende de validação específica.
+
+
+### Baixar e instalar o modelo
+
+[Baixar o pacote completo para Google Planilhas](../downloads/estacionamento/estacionamento-pacote-google-planilhas.zip). O ZIP contém cópias derivadas das planilhas originais, dados fictícios, manifesto de restauração e instalador. Siga `INSTALACAO-PT.md` dentro do pacote: importe todos os componentes, execute a configuração e autorize as conexões entre suas próprias cópias. Os arquivos XLSX servem como transporte para o Google Planilhas; não são apresentados como sistemas compatíveis com Excel.
 
 ## English
 
@@ -66,6 +71,10 @@ The examples do not assign one space simply because a contract scope uses the wo
 
 A dedicated native package requires **four files: area-specific payment source → selected operations → supporting base → dashboard**. The supporting source, titled “2026 - Gestão de Pagamento de Energia, Água e Imóveis - CREA”, feeds operations through the **Estacionamentos** and **CONEXÃO GEIN** tabs. It also contains recorded parking-space quantities and entries whose contract link needs review. An unlinked entry does not automatically count as a valid contract. The separation must preserve every cycle, amendment and transaction linked to the selected contracts. Those same records must not be counted again in Works & Facilities.
 
-This guide and the demonstration do not replace the native set. Use only files explicitly available in the downloads section. When offered, copy the complete set, update references between your copies and authorize connections in the order payment source → operations → base → dashboard. Check distinct contracts with the same supplier, missing space counts and unlinked entries.
+This guide and the demonstration do not replace the native set. Use only files explicitly available in the downloads section. Import the complete set and configure references between your copies with the setup script and authorize connections in the order payment source → operations → base → dashboard. Check distinct contracts with the same supplier, missing space counts and unlinked entries.
 
 Spreadsheets remain in Portuguese. The selection needs its own references, without institutional-source connections or unrelated contracts, personal data and real internal documents. Excel compatibility requires separate validation.
+
+### Download and install the model
+
+[Download the complete Google Sheets package](../downloads/estacionamento/estacionamento-pacote-google-planilhas.zip). The ZIP includes copies derived from the original spreadsheets, fictional data, a restoration manifest and setup script. Follow `INSTALLATION-EN.md` inside the package: import every component, run setup and authorize connections between your own copies. The XLSX files transport the models into Google Sheets; they are not presented as Excel-compatible systems.
