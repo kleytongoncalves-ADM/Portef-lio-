@@ -57,10 +57,15 @@ test('financial duplicate review sums every candidate; day matches are separate'
   assert.equal(result.reviewAmount,200);
   assert.equal(result.reviewCount,2);
   assert.equal(result.financeIds.size,2);
-  assert.equal(result.dayIds.size,3);
+  assert.equal(result.dayIds.size,2);
+  assert.equal(result.dayIds.has('c'),false);
   assert.equal(result.financeIds.has('c'),false);
   assert.equal(fleetDuplicateInfo([{...row,amount:100.004},duplicate]).reviewAmount,200);
   assert.equal(fleetDuplicateInfo([{...row,amount:null},{...duplicate,amount:null}]).financeIds.size,0);
+  const washes=fleetDuplicateInfo([wash,{...wash,id:'d'}]);
+  assert.equal(washes.dayIds.size,0);
+  assert.equal(washes.financeIds.size,0);
+  assert.equal(washes.reviewAmount,0);
 });
 
 test('educational odometer delta excludes washing and retains valid anchor after regression',()=>{
@@ -78,6 +83,27 @@ test('educational odometer delta excludes washing and retains valid anchor after
   assert.equal(result.get('d').status,'check');
   assert.equal(result.get('e').km,150);
   assert.equal(result.get('f').km,null);
+});
+
+test('educational odometer ceiling uses actual elapsed days rather than interval distance',()=>{
+  const base={entity:'DEMO-A',type:'fuel'};
+  const longInterval=deriveMileage([
+    {...base,id:'a',date:'2026-09-01',time:'12:00',odometer:1000},
+    {...base,id:'b',date:'2026-09-03',time:'12:00',odometer:1800},
+  ]);
+  assert.equal(longInterval.get('b').km,800);
+  assert.equal(longInterval.get('b').status,'ok');
+  const shortInterval=deriveMileage([
+    {...base,id:'a',date:'2026-09-01',time:'00:00',odometer:1000},
+    {...base,id:'b',date:'2026-09-01',time:'12:00',odometer:1400},
+  ]);
+  assert.equal(shortInterval.get('b').km,null);
+  assert.equal(shortInterval.get('b').status,'check');
+  const boundary=deriveMileage([
+    {...base,id:'a',date:'2026-09-01',time:'00:00',odometer:1000},
+    {...base,id:'b',date:'2026-09-01',time:'12:00',odometer:1300},
+  ]);
+  assert.equal(boundary.get('b').km,300);
 });
 
 test('property due date logic does not imply payment confirmation',()=>{

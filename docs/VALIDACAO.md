@@ -7,6 +7,7 @@
 - Leitura de metadados e fórmulas das sete fontes indicadas; dependência complementar de pagamentos encontrada e inspecionada.
 - Currículo analisado para confirmar nome, cargos, datas, formação e contato profissional.
 - XLSM sanitizado com estrutura preservada: 40 fórmulas, 167 mesclagens, estilos e regras condicionais; relatório e hashes em `downloads/precos/`.
+- Cópias privadas da Frota preparadas: 26 abas, cenário fictício e conexões remapeadas. Varredura dos exports das cópias sem correspondências nos identificadores originais procurados; dependências de autorização e Apps Script ainda pendentes.
 - Testes Node: risco zero/positivo/negativo, falta de insumos, preço ausente versus zero, proposta incompleta, lavagem, duplicidade financeira, delta didático de hodômetro, vencimentos de imóveis, estacionamento e filtros vazios.
 - Verificações estáticas: rotas, módulos importados, downloads locais, guias, paridade das traduções e busca de dados/URLs privados no pacote público.
 - Prévia real do XLSM renderizada e inspecionada; os erros do modelo em branco e diferenças do motor de renderização estão documentados no guia do arquivo.

@@ -45,6 +45,7 @@ Referência oficial: [Configuração da origem de publicação](https://docs.git
 - **Site:** cinco páginas temáticas, apresentação profissional baseada no currículo, interface PT/EN, navegação contextual por mouse/teclado/toque e CSS responsivo com respeito a movimento reduzido.
 - **Demonstrações:** filtros, tabelas, indicadores e gráficos calculados sobre exemplos; edição, restauração e armazenamento na sessão. Nenhuma escrita nas fontes.
 - **Mapa de Preço:** modelo XLSM original sanitizado, ZIP, guias PT/EN, prévia e relatório. As fórmulas originais foram preservadas, inclusive inconsistências documentadas; requer revisão funcional antes de uso operacional.
+- **Frota nativa:** três cópias privadas preparadas com dados fictícios. As conexões e o recálculo final no Google Planilhas aguardam liberação no navegador; ver `docs/frota-modelos-status.md`.
 - **Demais planilhas nativas:** distribuição pública pendente. Fontes dependem de outros workbooks, dados internos e recursos cuja sanitização/execução completa ainda não foi certificada. Não são oferecidas exportações Excel com fórmulas quebradas como sistemas utilizáveis.
 - **Guias:** `guia.html` exibe os arquivos de `docs/` no idioma selecionado. O download Markdown inclui as duas versões.
 

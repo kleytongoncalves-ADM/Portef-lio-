@@ -47,6 +47,7 @@ export function fleetDuplicateInfo(rows) {
   const dayGroups = new Map();
   const financeGroups = new Map();
   for (const row of rows) {
+    if (row.type !== 'fuel') continue;
     const dayKey = JSON.stringify([row.entity, row.date]);
     const financeKey = JSON.stringify([row.date, row.driver, row.entity, row.station, finite(row.amount) ? Math.round(row.amount * 100) : null, row.type]);
     const groups = [[dayGroups, dayKey], ...(finite(row.amount) ? [[financeGroups, financeKey]] : [])];
@@ -74,15 +75,18 @@ export function deriveMileage(rows) {
   for (const row of ordered) {
     if (row.type === 'wash') { result.set(row.id, { km: null, status: 'wash' }); continue; }
     if (!finite(row.odometer)) { result.set(row.id, { km: null, status: 'pending' }); continue; }
-    const previousKm = previous.get(row.entity);
-    if (!finite(previousKm)) {
-      previous.set(row.entity, row.odometer);
+    const timestamp = Date.parse(`${row.date}T${row.time || '00:00'}:00Z`);
+    if (!finite(timestamp)) { result.set(row.id, { km: null, status: 'pending' }); continue; }
+    const anchor = previous.get(row.entity);
+    if (!anchor) {
+      previous.set(row.entity, {odometer: row.odometer, timestamp});
       result.set(row.id, { km: null, status: 'first' });
       continue;
     }
-    const delta = roundMoney(row.odometer - previousKm);
-    if (delta <= 0 || delta > 600) { result.set(row.id, { km: null, status: 'check' }); continue; }
-    previous.set(row.entity, row.odometer);
+    const delta = roundMoney(row.odometer - anchor.odometer);
+    const elapsedDays = (timestamp - anchor.timestamp) / 86_400_000;
+    if (delta <= 0 || elapsedDays <= 0 || delta / elapsedDays > 600) { result.set(row.id, { km: null, status: 'check' }); continue; }
+    previous.set(row.entity, {odometer: row.odometer, timestamp});
     result.set(row.id, { km: delta, status: 'ok' });
   }
   return result;
@@ -192,8 +196,8 @@ const NOTICES = {
     en:'Rent, condominium, property tax and fees link to the property ID. Expense due dates and contract expiry are separate dates. A past due date without a posting is a review item; it does not prove default. A posting is not bank payment confirmation.',
   },
   frota: {
-    pt:'KM/L importado, hodômetro e consumo são campos distintos. Lavagens não compõem litros nem consumo. O delta de hodômetro abaixo é didático: usa abastecimentos, rejeita regressão, zero e saltos acima de 600 km; não replica mediana, reconexão ou rateio mensal da origem. Duplicidades são suspeitas, sem exclusão automática.',
-    en:'Imported KM/L, odometer and consumption are separate fields. Car washes do not contribute liters or consumption. The odometer delta below is educational: it uses fuel entries and rejects regression, zero and jumps above 600 km; it does not reproduce the source’s median, reconnection or monthly allocation. Duplicate flags are suspicions, with no automatic removal.',
+    pt:'KM/L importado, hodômetro e consumo são campos distintos. Lavagens não compõem litros, consumo ou análise de duplicidade. O delta de hodômetro é didático: usa abastecimentos, rejeita regressão, zero e taxa superior a 600 km/dia pelo intervalo real de data e hora; não replica mediana, reconexão ou rateio mensal da origem. Duplicidades são suspeitas, sem exclusão automática.',
+    en:'Imported KM/L, odometer and consumption are separate fields. Car washes do not contribute liters, consumption or duplicate analysis. The educational odometer delta uses fuel entries and rejects regression, zero and a rate above 600 km/day based on actual elapsed date and time; it does not reproduce the source’s median, reconnection or monthly allocation. Duplicate flags are suspicions, with no automatic removal.',
   },
   estacionamento: {
     pt:'Painel web adaptado, sem painel equivalente confirmado na origem. Cada contrato é uma unidade, mesmo quando compartilha prestador. Vagas são opcionais. Valores mensais e globais permanecem separados, sem conversão. Registros sem vínculo cadastral ficam visíveis para conferência e fora dos totais contratuais.',
