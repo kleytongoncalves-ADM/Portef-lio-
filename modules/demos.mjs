@@ -2,6 +2,7 @@
  * Standalone educational demonstrations. Every record below is invented.
  * These calculations are adaptations; they do not execute the native workbooks.
  */
+import { revealElements, animateMetricValues } from '../assets/effects.mjs';
 export const DEMO_DATE = '2026-09-18';
 const finite = value => typeof value === 'number' && Number.isFinite(value);
 const sum = values => values.filter(finite).reduce((total, value) => total + value, 0);
@@ -353,6 +354,7 @@ export function mountDemo(container, moduleId, lang = 'pt') {
     return `<section class="panel demo-detail" id="${prefix}-detail" aria-labelledby="${prefix}-detail-title"><div><span class="eyebrow">${t.detailTitle}</span><h3 id="${prefix}-detail-title" tabindex="-1">${escape(title(row))}</h3><p><small>${t.identifier}: ${escape(row.id)}</small></p>${info}</div><form data-demo-edit><h4>${t.edit}</h4><p>${t.changeHint}</p><div class="filters">${fields}</div><button class="button" type="submit">${t.save}</button></form></section>`;
   }
 
+  let firstRender = true;
   function render(focusTarget) {
     const visible = filterRows(rows, filters);
     if (!visible.some(row=>row.id===selectedId)) selectedId = visible[0]?.id || null;
@@ -366,6 +368,8 @@ export function mountDemo(container, moduleId, lang = 'pt') {
     container.innerHTML=`<p class="notice">${escape(NOTICES[moduleId][lang])}</p><div class="demo-heading"><p><strong>${t.sample}</strong><br>${t.help}</p><button type="button" class="button secondary" data-action="restore">${t.restore}</button></div><div class="filters">${selector('period',t.period,periods,t.all,value=>new Date(`${value}-01T12:00:00Z`).toLocaleDateString(locale,{year:'numeric',month:'long',timeZone:'UTC'}))}${selector('entity',ENTITY_LABEL[moduleId][lang],entities,t.allEntities,value=>moduleId==='precos'?value:`${value} · ${title(rows.find(row=>row.entity===value))}`)}${selector('type',t.type,types,t.allTypes,typeName)}<button type="button" class="button secondary" data-action="clear">${t.clear}</button></div><p class="demo-status" role="status" aria-live="polite">${announcement?`${escape(announcement)} `:''}${t.showing} ${visible.length} ${t.of} ${rows.length} ${t.records}.</p>${visible.length?`<div class="metric-grid">${view.metrics}</div><p class="demo-note">${escape(view.note)}</p>${view.chart}${view.table}${details(visible.find(row=>row.id===selectedId))}`:`<div class="empty"><h3>${t.empty}</h3><p>${t.emptyHint}</p></div>`}<p class="demo-note">${t.session}</p>`;
     if(focusTarget==='details') container.querySelector(`#${prefix}-detail-title`)?.focus({preventScroll:true});
     else if(focusTarget) container.querySelector(`[data-filter="${focusTarget}"]`)?.focus({preventScroll:true});
+    animateMetricValues(container);
+    if(firstRender){revealElements(container.querySelectorAll('.metric, .panel'));firstRender=false;}
   }
 
   function onChange(event) {
