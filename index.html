@@ -2,434 +2,253 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=ed1214e1-90ff-4fe2-877e-d25c782838b1
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kleyton Gonçalves — Gestão administrativa</title>
-  <meta name="description" content="Kleyton Gonçalves Silva: controle contratual, contas a pagar, pesquisa de preços e sistemas de planilhas que avisam antes do problema. Veja o que eu faço, como faço e teste as demonstrações.">
+  <title>Kleyton Gonçalves — Contratos e controles em planilhas</title>
+  <meta name="description" content="Kleyton Gonçalves Silva: controle contratual, contas a pagar, pesquisa de preços e sistemas de controle em Google Planilhas e Apps Script. Teste os simuladores de saldo e de renovação.">
   <link rel="canonical" href="https://kleyton-adm.netlify.app/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:url" content="https://kleyton-adm.netlify.app/">
   <meta property="og:title" content="Kleyton Gonçalves — Sistemas que avisam antes do problema">
-  <meta property="og:description" content="Contratos, contas a pagar e pesquisa de preços. O que eu sei fazer, como faço e cinco demonstrações interativas para testar.">
+  <meta property="og:description" content="Contratos, contas a pagar e pesquisa de preços, com controles em Google Planilhas e Apps Script.">
   <meta property="og:image" content="https://kleyton-adm.netlify.app/assets/og.png">
-  <meta property="og:image:width" content="1469">
-  <meta property="og:image:height" content="772">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/v3.css">
 </head>
 <body>
-  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24"><path d="M3 8h18v12H3zM8 8V5h8v3M3 13h18"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L5 19a1 1 0 001 1h12a1 1 0 001-1l-5-10V3M8 14h8"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v5l3 2"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5zM6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 7 9-7"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3A4 4 0 0010 18.7l1-1"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14A8 8 0 1110 4a7 7 0 0010 10z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7h16a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2zM3 7l2-3h12M16 13h3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM8 12l3 3 5-6"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M12 9h8v12M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16v-5l2-5h10l2 5v5M3 16h18M7 19v-3M17 19v-3M7 12h10"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
 
-  <header class="topbar">
-    <div class="wrap topbar__inner">
-      <a class="brand" href="#inicio" aria-label="Início">
-        <img src="assets/mark.svg" alt="" width="32" height="32">
-        <span>Kleyton Gonçalves</span>
-      </a>
-      <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
-        <span></span><span></span>
-      </button>
-      <nav id="nav" class="nav">
-        <a href="#habilidades">O que eu faço</a>
-        <a href="#metodo">Como eu faço</a>
-        <a href="#laboratorio">Laboratório</a>
-        <a href="#principios">Princípios</a>
-        <a href="#trajetoria">Trajetória</a>
-        <a class="nav__cta" href="#contato">Contato</a>
-      </nav>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<div class="shell">
+  <aside class="side" aria-label="Menu principal">
+    <div class="who">
+      <div class="mono" aria-hidden="true">KG</div>
+      <div><strong>Kleyton Gonçalves</strong><span>Auxiliar de Escritório · CREA-RJ</span></div>
     </div>
-  </header>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><svg class="icon"><use href="#i-menu"/></svg>Menu</button>
+    <nav class="nav" id="menu">
+      <a href="#inicio" aria-current="true"><svg class="icon"><use href="#i-home"/></svg>Início</a>
+      <a href="#competencias" aria-current="false"><svg class="icon"><use href="#i-brief"/></svg>Competências</a>
+      <a href="#projetos" aria-current="false"><svg class="icon"><use href="#i-layers"/></svg>Projetos</a>
+      <a href="#lab" aria-current="false"><svg class="icon"><use href="#i-flask"/></svg>Laboratório</a>
+      <a href="#principios" aria-current="false"><svg class="icon"><use href="#i-scale"/></svg>Princípios</a>
+      <a href="#trajetoria" aria-current="false"><svg class="icon"><use href="#i-clock"/></svg>Trajetória</a>
+      <a href="#formacao" aria-current="false"><svg class="icon"><use href="#i-cap"/></svg>Formação</a>
+      <a href="#contato" aria-current="false"><svg class="icon"><use href="#i-mail"/></svg>Contato</a>
+    </nav>
+    <div class="side__foot">
+      <a class="pill pill--solid" href="curriculo"><svg class="icon"><use href="#i-file"/></svg>Ver currículo</a>
+      <a class="pill" href="https://www.linkedin.com/in/kleyton-gon%C3%A7alves-silva/"><svg class="icon"><use href="#i-link"/></svg>LinkedIn</a>
+      <button class="pill" id="tema" type="button"><svg class="icon"><use href="#i-moon"/></svg><span>Tema escuro</span></button>
+    </div>
+  </aside>
 
-  <main id="conteudo">
-    <!-- HERO -->
-    <section id="inicio" class="hero">
-      <div class="wrap hero__grid">
-        <div class="hero__copy">
-          <p class="eyebrow">Administração · Contratos · Planilhas inteligentes</p>
-          <h1>Transformo rotinas administrativas em sistemas que <em>avisam antes</em> do problema.</h1>
-          <p class="lead">Sou Kleyton Gonçalves Silva, de Niterói (RJ). No CREA-RJ, cuido de contratos, pagamentos, imóveis e frota, e construo os controles no Google Planilhas que deixam prazos, saldos e pendências à vista de quem decide.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#laboratorio">Testar as demonstrações</a>
-            <a class="btn btn--ghost" href="#habilidades">Ver o que eu sei fazer</a>
+  <main class="main" id="conteudo">
+
+    <!-- INÍCIO -->
+    <section class="sec" id="inicio">
+      <div class="bento">
+        <div class="card hero s12">
+          <p class="kicker">Administração · Contratos · Planilhas</p>
+          <h1>Rotinas administrativas viram sistemas que <em>avisam antes</em> do problema.</h1>
+          <p>Sou Kleyton Gonçalves Silva, de Niterói (RJ). No CREA-RJ, cuido de contratos, pagamentos, imóveis e frota, e construo em Google Planilhas os controles que deixam prazos, saldos e pendências à vista de quem decide.</p>
+          <div class="hero__cta">
+            <a class="btn btn--w" href="#lab"><svg class="icon"><use href="#i-flask"/></svg>Testar os simuladores</a>
+            <a class="btn btn--o" href="#projetos"><svg class="icon"><use href="#i-layers"/></svg>Ver projetos</a>
           </div>
-          <ul class="hero__facts" aria-label="Destaques">
-            <li><strong>CREA-RJ</strong><span>Auxiliar de Escritório</span></li>
-            <li><strong>5 sistemas</strong><span>de controle em planilhas</span></li>
-            <li><strong>Lei 14.133</strong><span>contratações públicas</span></li>
-          </ul>
         </div>
+        <div class="card stat s4"><svg class="icon"><use href="#i-building"/></svg><strong>CREA-RJ</strong><span>Auxiliar de Escritório desde jun/2026</span></div>
+        <div class="card stat s4"><svg class="icon"><use href="#i-grid"/></svg><strong>5 sistemas</strong><span>de controle em Google Planilhas</span></div>
+        <div class="card stat s4"><svg class="icon"><use href="#i-scale"/></svg><strong>Lei 14.133</strong><span>contratações públicas</span></div>
 
-        <figure class="sheet" aria-label="Exemplo animado de planilha de controle com dados fictícios">
-          <div class="sheet__bar">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            <span class="sheet__title">PAINEL DE CONTRATOS · dados fictícios</span>
+        <div class="card live s12">
+          <div class="live__head"><h3>Painel de contratos</h3><span class="tag">Dados fictícios</span></div>
+          <div class="tblwrap">
+            <table class="tbl">
+              <thead><tr><th>Contrato</th><th>Término</th><th>Saldo projetado</th><th>Situação</th></tr></thead>
+              <tbody>
+                <tr><td>CT-014 Limpeza</td><td>26 mai. 2027</td><td>R$ 48.200</td><td><span class="chip ok">Regular</span></td></tr>
+                <tr><td>CT-022 Manutenção</td><td>01 fev. 2027</td><td>R$ 12.650</td><td><span class="chip warn">Renovar</span></td></tr>
+                <tr><td>CT-031 Vigilância</td><td>24 ago. 2027</td><td>−R$ 3.420</td><td><span class="chip bad">Insuficiência</span></td></tr>
+                <tr><td>CT-047 Elevadores</td><td>08 dez. 2026</td><td>R$ 7.800</td><td><span class="chip warn">Renovar</span></td></tr>
+                <tr><td>CT-052 Jardinagem</td><td>26 abr. 2027</td><td>R$ 21.900</td><td><span class="chip ok">Regular</span></td></tr>
+              </tbody>
+            </table>
           </div>
-          <div class="sheet__head">
-            <span>Contrato</span><span>Término</span><span>Saldo proj.</span><span>Situação</span>
-          </div>
-          <div class="sheet__body" id="liveSheet"></div>
-          <figcaption class="sheet__foot">
-            <span class="pulse"></span> <span id="liveMsg">Recalculando…</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- HABILIDADES -->
-    <section id="habilidades" class="section">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow">O que eu sei fazer</p>
-          <h2>Seis competências, aplicadas todos os dias.</h2>
-          <p class="section__lead">Abra cada cartão para ver <strong>como</strong> eu faço na prática, não só o nome da competência.</p>
-        </header>
-
-        <div class="skills">
-          <details class="skill" open>
-            <summary>
-              <span class="skill__icon" aria-hidden="true">§</span>
-              <span class="skill__title">Controle contratual</span>
-              <span class="skill__tag">Vigências · aditivos · saldos</span>
-            </summary>
-            <div class="skill__body">
-              <p>Acompanho o ciclo de vida inteiro do contrato: vigência, termos aditivos, distratos, repactuações, saldo de empenho e janela de renovação.</p>
-              <ul>
-                <li>Separo <b>serviço</b> e <b>material</b> para que um saldo não esconda o outro.</li>
-                <li>Calculo o <b>saldo projetado</b>: empenho + aditivos − lançamentos − competências ainda por vir.</li>
-                <li>Sinalizo a renovação <b>120 dias antes</b> do término, com a situação da tramitação à parte.</li>
-              </ul>
-              <a class="skill__link" href="#laboratorio" data-open-demo="saldo">Ver na demonstração →</a>
-            </div>
-          </details>
-
-          <details class="skill">
-            <summary>
-              <span class="skill__icon" aria-hidden="true">₢</span>
-              <span class="skill__title">Contas a pagar e liquidação</span>
-              <span class="skill__tag">Notas · certidões · protocolos</span>
-            </summary>
-            <div class="skill__body">
-              <p>Confiro a documentação que sustenta cada pagamento antes de ele seguir no processo.</p>
-              <ul>
-                <li>Conferência de notas fiscais e certidões fiscais e trabalhistas para a liquidação da despesa.</li>
-                <li>Monitoramento dos lançamentos em contas a pagar e emissão de protocolos vinculados ao contrato.</li>
-                <li>Diferencio <b>lançado</b> de <b>pago</b>: um valor registrado não comprova a quitação.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="skill">
-            <summary>
-              <span class="skill__icon" aria-hidden="true">≈</span>
-              <span class="skill__title">Pesquisa de preços</span>
-              <span class="skill__tag">PNCP · Compras.gov.br · Banco de Preços</span>
-            </summary>
-            <div class="skill__body">
-              <p>Monto estimativas de preço defensáveis para contratações públicas, com várias fontes de referência.</p>
-              <ul>
-                <li>Levanto referências no PNCP, no Compras.gov.br, no Banco de Preços e em mídia especializada.</li>
-                <li>Calculo média e mediana por item e comparo propostas de fornecedores, separando peças e serviços.</li>
-                <li>Apoio a análise de editais e termos de referência, conferindo especificações e critérios.</li>
-              </ul>
-              <a class="skill__link" href="#laboratorio" data-open-demo="preco">Ver na demonstração →</a>
-            </div>
-          </details>
-
-          <details class="skill">
-            <summary>
-              <span class="skill__icon" aria-hidden="true">▦</span>
-              <span class="skill__title">Arquitetura de planilhas</span>
-              <span class="skill__tag">Camadas · IMPORTRANGE · painéis</span>
-            </summary>
-            <div class="skill__body">
-              <p>Não faço uma planilha gigante. Organizo <b>sistemas de vários arquivos</b>, cada um com uma função.</p>
-              <ul>
-                <li><b>Operacional</b> para o registro, <b>base auxiliar</b> para as regras e <b>painéis</b> só para a leitura.</li>
-                <li>Arquivos conectados por IMPORTRANGE, com uma aba de parâmetros centralizada.</li>
-                <li>Painéis de risco, renovações, previsão, histórico e anomalias, todos a partir da mesma base.</li>
-              </ul>
-              <a class="skill__link" href="#metodo">Ver o método →</a>
-            </div>
-          </details>
-
-          <details class="skill">
-            <summary>
-              <span class="skill__icon" aria-hidden="true">✓</span>
-              <span class="skill__title">Qualidade e conferência de dados</span>
-              <span class="skill__tag">Duplicidades · hodômetro · pendências</span>
-            </summary>
-            <div class="skill__body">
-              <p>Escrevo regras que encontram o registro que precisa de atenção, sem acusar ninguém automaticamente.</p>
-              <ul>
-                <li>Detecto possíveis duplicidades financeiras e abastecimentos repetidos no mesmo dia.</li>
-                <li>Valido leituras de hodômetro e consumo (km/L fora da faixa vai para conferência).</li>
-                <li>Separo a <b>pendência de dados</b> (falta informação) da <b>pendência de lançamento</b> (venceu e não foi registrado).</li>
-              </ul>
-              <a class="skill__link" href="#laboratorio" data-open-demo="frota">Ver na demonstração →</a>
-            </div>
-          </details>
-
-          <details class="skill">
-            <summary>
-              <span class="skill__icon" aria-hidden="true">⚙</span>
-              <span class="skill__title">Automação, IA e documentação</span>
-              <span class="skill__tag">Apps Script · prompts · guias</span>
-            </summary>
-            <div class="skill__body">
-              <p>Faço o sistema funcionar também para quem não o construiu.</p>
-              <ul>
-                <li>Escrevi um instalador em Apps Script que restaura fórmulas e abas a partir de um manifesto e retoma lotes interrompidos.</li>
-                <li>Uso IA generativa, com formação em engenharia de prompt e agentes, para acelerar análise e documentação.</li>
-                <li>Escrevo guias de uso que deixam claro o que cada indicador significa e os seus limites.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-
-        <div class="toolbelt" aria-label="Ferramentas">
-          <span>Google Planilhas</span><span>Excel</span><span>Apps Script</span><span>SEI</span><span>PNCP</span><span>Compras.gov.br</span><span>Banco de Preços</span><span>Word</span><span>IA generativa</span>
         </div>
       </div>
     </section>
 
-    <!-- MÉTODO -->
-    <section id="metodo" class="section section--tint">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow">Como eu faço</p>
-          <h2>Do registro solto à decisão, em cinco camadas.</h2>
-          <p class="section__lead">Todo sistema que eu construo segue o mesmo caminho. Clique em cada etapa.</p>
-        </header>
+    <!-- COMPETÊNCIAS -->
+    <section class="sec" id="competencias">
+      <div class="sec__head"><p class="kicker">Competências</p><h2>O que eu faço no dia a dia</h2><p>Seis frentes de trabalho, com o que cada uma envolve na prática.</p></div>
+      <div class="bento">
+        <article class="card s4"><div class="ico"><svg class="icon"><use href="#i-file"/></svg></div><h3>Controle contratual</h3>
+          <p>Ciclo de vida do contrato: vigência, termos aditivos, distratos, repactuações, saldo de empenho e janela de renovação.</p>
+          <ul class="dots"><li>Separo serviço e material para que um saldo não esconda o outro.</li><li>Calculo o saldo projetado: empenho + aditivos − lançamentos − competências por vir.</li><li>Sinalizo a renovação 120 dias antes do término.</li></ul></article>
+        <article class="card s4"><div class="ico"><svg class="icon"><use href="#i-wallet"/></svg></div><h3>Contas a pagar e liquidação</h3>
+          <p>Confiro a documentação que sustenta cada pagamento antes de ele seguir no processo.</p>
+          <ul class="dots"><li>Notas fiscais e certidões fiscais e trabalhistas para a liquidação.</li><li>Lançamentos em contas a pagar e emissão de protocolos.</li><li>Distingo lançado de pago: registro não comprova quitação.</li></ul></article>
+        <article class="card s4"><div class="ico"><svg class="icon"><use href="#i-search"/></svg></div><h3>Pesquisa de preços</h3>
+          <p>Estimativas de preço para contratações públicas, com várias fontes de referência.</p>
+          <ul class="dots"><li>PNCP, Compras.gov.br, Banco de Preços e mídia especializada.</li><li>Média e mediana por item; comparação de propostas.</li><li>Apoio à análise de editais e termos de referência.</li></ul></article>
+        <article class="card s4"><div class="ico"><svg class="icon"><use href="#i-grid"/></svg></div><h3>Arquitetura de planilhas</h3>
+          <p>Sistemas em camadas: registro, importação, tratamento, regras e painel.</p>
+          <ul class="dots"><li>IMPORTRANGE entre arquivos operacionais e bases auxiliares.</li><li>Painéis gerenciais de vigências, pagamentos e saldos.</li></ul></article>
+        <article class="card s4"><div class="ico"><svg class="icon"><use href="#i-check"/></svg></div><h3>Qualidade e conferência de dados</h3>
+          <p>Regras escritas para achar o que merece conferência.</p>
+          <ul class="dots"><li>Duplicidades e abastecimentos repetidos.</li><li>Validação de hodômetro e consumo.</li><li>Pendência de lançamento × pendência de dados.</li></ul></article>
+        <article class="card s4"><div class="ico"><svg class="icon"><use href="#i-bolt"/></svg></div><h3>Automação, IA e documentação</h3>
+          <p>Apps Script, engenharia de prompt e IA generativa na rotina.</p>
+          <ul class="dots"><li>Instalador em Apps Script que restaura fórmulas a partir de um manifesto.</li><li>Guias de uso dos controles.</li></ul></article>
+      </div>
+      <div class="chips" aria-label="Ferramentas">
+        <span>Google Planilhas</span><span>Excel</span><span>Word</span><span>Apps Script</span><span>SEI</span><span>PNCP</span><span>Compras.gov.br</span><span>Banco de Preços</span><span>IA generativa</span>
+      </div>
+    </section>
 
-        <ol class="pipeline" role="tablist" aria-label="Etapas do método">
-          <li><button role="tab" aria-selected="true" data-step="0"><span class="pipeline__n">01</span>Registro</button></li>
-          <li><button role="tab" aria-selected="false" data-step="1"><span class="pipeline__n">02</span>Importação</button></li>
-          <li><button role="tab" aria-selected="false" data-step="2"><span class="pipeline__n">03</span>Tratamento</button></li>
-          <li><button role="tab" aria-selected="false" data-step="3"><span class="pipeline__n">04</span>Regras</button></li>
-          <li><button role="tab" aria-selected="false" data-step="4"><span class="pipeline__n">05</span>Painel</button></li>
-        </ol>
-
-        <div class="pipeline__panel" id="stepPanel" role="tabpanel" aria-live="polite"></div>
+    <!-- PROJETOS -->
+    <section class="sec" id="projetos">
+      <div class="sec__head"><p class="kicker">Projetos</p><h2>Sistemas de controle em planilhas</h2><p>Cinco sistemas desenvolvidos no Google Planilhas e a arquitetura que os integra. As demonstrações usam apenas dados fictícios.</p></div>
+      <div class="bento">
+        <article class="card proj s6"><div class="ico"><svg class="icon"><use href="#i-building"/></svg></div><h3>Obras e Facilities</h3><p>Saldo atual e projetado por ciclo financeiro, separação entre serviço e material, alerta de insuficiência e janela de renovação de 120 dias.</p><div class="chips"><span>Saldo projetado</span><span>Renovação</span></div></article>
+        <article class="card proj s6"><div class="ico"><svg class="icon"><use href="#i-home"/></svg></div><h3>Imóveis</h3><p>Despesas por imóvel (aluguel, condomínio, IPTU e taxas), com a distinção entre a pendência de lançamento e a pendência de dados.</p><div class="chips"><span>Vencimentos</span><span>Pendências</span></div></article>
+        <article class="card proj s6"><div class="ico"><svg class="icon"><use href="#i-car"/></svg></div><h3>Frota</h3><p>Validação de hodômetro e consumo (km/L), detecção de abastecimentos repetidos e possíveis duplicidades financeiras.</p><div class="chips"><span>km/L</span><span>Duplicidades</span></div></article>
+        <article class="card proj s6"><div class="ico"><svg class="icon"><use href="#i-car"/></svg></div><h3>Estacionamento</h3><p>Contratos, vagas e valores, sem converter o valor global em mensalidade nem contar duas vezes.</p><div class="chips"><span>Contratos</span><span>Vagas</span></div></article>
+        <article class="card proj s6"><div class="ico"><svg class="icon"><use href="#i-search"/></svg></div><h3>Mapa de Preço</h3><p>Comparação de referências e propostas, com média e mediana e o tratamento de propostas incompletas.</p><div class="chips"><span>Média e mediana</span><span>Propostas</span></div></article>
+        <article class="card proj s6"><div class="ico"><svg class="icon"><use href="#i-bolt"/></svg></div><h3>Arquitetura e automação</h3><p>Arquivos integrados por IMPORTRANGE e um instalador em Apps Script que restaura fórmulas a partir de um manifesto.</p>
+          <div class="stack" aria-label="Camadas"><div><b>1</b>Planilha operacional (registro)</div><div><b>2</b>Base auxiliar (importação e tratamento)</div><div><b>3</b>Painéis (regras e consulta)</div></div></article>
       </div>
     </section>
 
     <!-- LABORATÓRIO -->
-    <section id="laboratorio" class="section">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow">Laboratório · dados fictícios</p>
-          <h2>Não precisa acreditar. Teste.</h2>
-          <p class="section__lead">Cinco miniaturas das regras que uso nos meus controles. Mude os valores e veja os alertas reagirem. Nenhum dado real é usado ou enviado.</p>
-        </header>
-
-        <div class="lab">
-          <div class="lab__tabs" role="tablist" aria-label="Demonstrações">
-            <button role="tab" aria-selected="true" data-demo="saldo">Saldo contratual</button>
-            <button role="tab" aria-selected="false" data-demo="renov">Radar de renovações</button>
-            <button role="tab" aria-selected="false" data-demo="preco">Mapa de preço</button>
-            <button role="tab" aria-selected="false" data-demo="frota">Conferência de frota</button>
-            <button role="tab" aria-selected="false" data-demo="imoveis">Pendências de imóveis</button>
+    <section class="sec lab" id="lab">
+      <div class="sec__head"><p class="kicker">Laboratório</p><h2>Teste as regras que eu uso</h2><p>Mude os valores e veja os alertas reagirem. Nenhum dado real é usado ou enviado.</p></div>
+      <div class="bento">
+        <div class="card s7" id="saldo">
+          <h3>O saldo cobre o ano?</h3>
+          <p>Contrato fictício. Saldo projetado = empenho + aditivos − lançado − (média mensal × competências restantes).</p>
+          <div class="fields">
+            <label for="emp"><span class="row">Empenho inicial <output id="emp-o"></output></span><input id="emp" type="range" min="50000" max="500000" step="5000" value="240000"></label>
+            <label for="adit"><span class="row">Aditivos <output id="adit-o"></output></span><input id="adit" type="range" min="0" max="100000" step="2500" value="20000"></label>
+            <label for="lanc"><span class="row">Já lançado <output id="lanc-o"></output></span><input id="lanc" type="range" min="0" max="500000" step="2500" value="150000"></label>
+            <label for="med"><span class="row">Média mensal <output id="med-o"></output></span><input id="med" type="range" min="1000" max="60000" step="500" value="18500"></label>
+            <label for="comp"><span class="row">Competências restantes <output id="comp-o"></output></span><input id="comp" type="range" min="1" max="12" step="1" value="6"></label>
           </div>
-
-          <!-- SALDO -->
-          <div class="demo" id="demo-saldo" role="tabpanel">
-            <div class="demo__intro">
-              <h3>O saldo cobre o ano?</h3>
-              <p>Ajuste os valores de um contrato fictício. O cálculo é o mesmo do meu painel de risco: <code>empenho + aditivos − lançado − (média mensal × competências restantes)</code>.</p>
-            </div>
-            <div class="demo__grid">
-              <form class="controls" id="saldoForm" onsubmit="return false">
-                <label>Empenho inicial <output data-for="emp"></output><input type="range" name="emp" min="50000" max="400000" step="5000" value="240000"></label>
-                <label>Aditivos <output data-for="adt"></output><input type="range" name="adt" min="0" max="120000" step="5000" value="20000"></label>
-                <label>Já lançado <output data-for="lan"></output><input type="range" name="lan" min="0" max="300000" step="5000" value="150000"></label>
-                <label>Média mensal <output data-for="med"></output><input type="range" name="med" min="5000" max="40000" step="500" value="18500"></label>
-                <label>Competências restantes <output data-for="comp"></output><input type="range" name="comp" min="0" max="12" step="1" value="6"></label>
-              </form>
-              <div class="result">
-                <div class="kpis">
-                  <div class="kpi"><span>Saldo atual</span><strong id="kAtual">—</strong></div>
-                  <div class="kpi"><span>Previsão restante</span><strong id="kPrev">—</strong></div>
-                  <div class="kpi kpi--main"><span>Saldo projetado</span><strong id="kProj">—</strong></div>
-                </div>
-                <div class="stack" aria-hidden="true">
-                  <div class="stack__seg stack__seg--used" id="segUsed"></div>
-                  <div class="stack__seg stack__seg--fore" id="segFore"></div>
-                  <div class="stack__seg stack__seg--free" id="segFree"></div>
-                </div>
-                <div class="stack__legend"><span class="lg lg--used">Lançado</span><span class="lg lg--fore">Previsto</span><span class="lg lg--free">Livre</span></div>
-                <p class="verdict" id="saldoVerdict"></p>
-              </div>
-            </div>
+          <div class="kpis">
+            <div class="kpi"><span>Saldo atual</span><strong id="k-atual"></strong></div>
+            <div class="kpi"><span>Previsão restante</span><strong id="k-prev"></strong></div>
+            <div class="kpi" id="kp"><span>Saldo projetado</span><strong id="k-proj"></strong></div>
           </div>
-
-          <!-- RENOVAÇÕES -->
-          <div class="demo" id="demo-renov" role="tabpanel" hidden>
-            <div class="demo__intro">
-              <h3>Quem entra na janela de renovação?</h3>
-              <p>Arraste a data de referência. Um contrato entra na janela quando faltam <b>120 dias ou menos</b> para o término. A tramitação aparece separada, porque um contrato pode estar na janela já com a renovação em andamento.</p>
-            </div>
-            <div class="controls controls--inline">
-              <label>Data de referência <output id="renovDate"></output><input type="range" id="renovSlider" min="0" max="365" step="1" value="0"></label>
-            </div>
-            <div class="timeline" id="renovList"></div>
-            <div class="legend-row">
-              <span class="badge badge--ok">Vigente</span><span class="badge badge--warn">Na janela (≤120 dias)</span><span class="badge badge--bad">Encerrado</span><span class="badge badge--info">Em tramitação</span>
-            </div>
-          </div>
-
-          <!-- PREÇO -->
-          <div class="demo" id="demo-preco" role="tabpanel" hidden>
-            <div class="demo__intro">
-              <h3>Média, mediana e propostas incompletas</h3>
-              <p>Edite as referências e as propostas. Deixe um campo <b>vazio</b> e depois digite <b>0</b>: o sistema trata as duas coisas de forma diferente, porque vazio quer dizer "sem cotação", não "preço zero".</p>
-            </div>
-            <div class="table-wrap">
-              <table class="grid" id="precoTable"></table>
-            </div>
-            <div class="kpis kpis--row" id="precoSummary"></div>
-          </div>
-
-          <!-- FROTA -->
-          <div class="demo" id="demo-frota" role="tabpanel" hidden>
-            <div class="demo__intro">
-              <h3>Que registro merece uma segunda olhada?</h3>
-              <p>Altere o hodômetro ou os litros. As regras marcam km rodado que não avança, consumo fora da faixa de 5 a 20 km/L, abastecimentos repetidos no mesmo dia e possíveis duplicidades. A lavagem não entra no consumo. <b>Alerta não é acusação</b>, é um convite à conferência.</p>
-            </div>
-            <label class="switch"><input type="checkbox" id="frotaOnly"> Mostrar só ocorrências</label>
-            <div class="table-wrap">
-              <table class="grid" id="frotaTable"></table>
-            </div>
-            <div class="kpis kpis--row" id="frotaSummary"></div>
-          </div>
-
-          <!-- IMÓVEIS -->
-          <div class="demo" id="demo-imoveis" role="tabpanel" hidden>
-            <div class="demo__intro">
-              <h3>Vigência não é vencimento</h3>
-              <p>Cada imóvel tem aluguel, condomínio, IPTU e taxas, cada um com o próprio vencimento. Mude a data de referência e veja o que vira <b>pendência de lançamento</b> (venceu sem registro) e o que é <b>pendência de dados</b> (sem data para conferir).</p>
-            </div>
-            <div class="controls controls--inline">
-              <label>Data de referência <output id="imovDate"></output><input type="range" id="imovSlider" min="0" max="60" step="1" value="20"></label>
-            </div>
-            <div class="table-wrap">
-              <table class="grid grid--matrix" id="imovTable"></table>
-            </div>
-            <div class="legend-row">
-              <span class="badge badge--ok">Lançado</span><span class="badge badge--info">A vencer</span><span class="badge badge--warn">Vence em até 5 dias</span><span class="badge badge--bad">Vencido sem lançamento</span><span class="badge badge--muted">Sem vencimento</span>
-            </div>
-          </div>
-
-          <button class="btn btn--small btn--ghost lab__reset" id="labReset" type="button">Restaurar exemplos</button>
+          <div class="bar" role="img" aria-label="Composição do empenho: lançado, previsto e livre"><i class="a" id="seg-a"></i><i class="b" id="seg-b"></i><i class="c" id="seg-c"></i></div>
+          <p style="font-size:.78rem;margin-top:6px">Azul-escuro: lançado · Azul: previsto · Azul-claro: livre</p>
+          <p class="verdict" id="verdict" role="status"></p>
+          <button class="btn btn--b" id="saldo-reset" type="button" style="margin-top:14px">Restaurar exemplo</button>
+        </div>
+        <div class="card s5">
+          <h3>Radar de renovação</h3>
+          <p>Escolha o término de um contrato fictício. A renovação é sinalizada 120 dias antes.</p>
+          <div class="fields"><label for="termino">Término da vigência<input id="termino" type="date"></label></div>
+          <div class="kpis" style="grid-template-columns:1fr 1fr"><div class="kpi"><span>Faltam / passaram</span><strong id="radar-dias"></strong></div><div class="kpi"><span>Situação</span><strong><span class="chip" id="radar-chip"></span></strong></div></div>
+          <p class="verdict" id="radar" role="status"></p>
         </div>
       </div>
     </section>
 
     <!-- PRINCÍPIOS -->
-    <section id="principios" class="section section--dark">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow">Princípios</p>
-          <h2>Distinções que evitam decisões erradas.</h2>
-          <p class="section__lead">Um painel bonito que mistura conceitos engana quem decide. Estas são as regras que coloco em todos os meus controles.</p>
-        </header>
-        <div class="principles">
-          <article><p class="neq"><span>Vazio</span><i>≠</i><span>Zero</span></p><p>A falta de informação continua sendo falta de informação. Nenhum campo vazio vira número inventado.</p></article>
-          <article><p class="neq"><span>Lançado</span><i>≠</i><span>Pago</span></p><p>Um valor registrado mostra o lançamento. A quitação depende de confirmação financeira.</p></article>
-          <article><p class="neq"><span>Alerta</span><i>≠</i><span>Irregularidade</span></p><p>Uma ocorrência aponta onde olhar. A conclusão vem da conferência, não da fórmula.</p></article>
-          <article><p class="neq"><span>Vigência</span><i>≠</i><span>Vencimento</span></p><p>O prazo do contrato e a data de pagamento da despesa são controles diferentes.</p></article>
-          <article><p class="neq"><span>Valor global</span><i>≠</i><span>Mensalidade</span></p><p>A periodicidade é confirmada, nunca presumida, antes de virar uma previsão mensal.</p></article>
-          <article><p class="neq"><span>Conectado</span><i>≠</i><span>Atualizado</span></p><p>Uma conexão funcionando não garante que toda a base foi recalculada. Eu verifico de ponta a ponta.</p></article>
-        </div>
+    <section class="sec" id="principios">
+      <div class="sec__head"><p class="kicker">Princípios</p><h2>Distinções que evitam decisões erradas</h2><p>Um painel bonito que mistura conceitos engana quem decide. Estas regras estão em todos os meus controles.</p></div>
+      <div class="bento">
+        <article class="card s4"><div class="pair"><span>Vazio</span><b>≠</b><span>Zero</span></div><p>A falta de informação continua sendo falta de informação. Nenhum campo vazio vira número inventado.</p></article>
+        <article class="card s4"><div class="pair"><span>Lançado</span><b>≠</b><span>Pago</span></div><p>Um valor registrado mostra o lançamento. A quitação depende de confirmação financeira.</p></article>
+        <article class="card s4"><div class="pair"><span>Alerta</span><b>≠</b><span>Irregularidade</span></div><p>Uma ocorrência aponta onde olhar. A conclusão vem da conferência, não da fórmula.</p></article>
+        <article class="card s4"><div class="pair"><span>Vigência</span><b>≠</b><span>Vencimento</span></div><p>O prazo do contrato e a data de pagamento da despesa são controles diferentes.</p></article>
+        <article class="card s4"><div class="pair"><span>Valor global</span><b>≠</b><span>Mensalidade</span></div><p>A periodicidade é confirmada, nunca presumida, antes de virar uma previsão mensal.</p></article>
+        <article class="card s4"><div class="pair"><span>Conectado</span><b>≠</b><span>Atualizado</span></div><p>Uma conexão funcionando não garante que toda a base foi recalculada. Eu verifico de ponta a ponta.</p></article>
       </div>
     </section>
 
     <!-- TRAJETÓRIA -->
-    <section id="trajetoria" class="section">
-      <div class="wrap trajetoria">
-        <div>
-          <header class="section__head section__head--left">
-            <p class="eyebrow">Trajetória</p>
-            <h2>Cada etapa somou uma competência.</h2>
-          </header>
-          <ol class="journey">
-            <li>
-              <span class="journey__when">jun/2026 — atual</span>
-              <h3>Auxiliar de Escritório · CREA-RJ</h3>
-              <p>Controle de contratos de obras, facilities e locações, contas a pagar, administração de imóveis e frota. Desenvolvo os painéis que a equipe consulta.</p>
-              <span class="journey__gain">+ controle contratual · liquidação · sistemas de planilhas</span>
-            </li>
-            <li>
-              <span class="journey__when">ago/2025 — jun/2026</span>
-              <h3>Estagiário em Licitações e Contratos · CREA-RJ (CLIC)</h3>
-              <p>Pesquisa de preços para contratações públicas e apoio à análise de editais e termos de referência.</p>
-              <span class="journey__gain">+ pesquisa de preços · Lei 14.133</span>
-            </li>
-            <li>
-              <span class="journey__when">2023 — 2025</span>
-              <h3>Estagiário Administrativo · INSS, Perícia Médica</h3>
-              <p>Abertura, instrução e tramitação de processos no SEI, incluindo documentos sigilosos.</p>
-              <span class="journey__gain">+ processo administrativo · SEI · sigilo</span>
-            </li>
-            <li>
-              <span class="journey__when">jan/2020 — jan/2021</span>
-              <h3>Auxiliar Administrativo · ECONIT Engenharia Ambiental</h3>
-              <p>Folha de ponto, benefícios, documentação de colaboradores e recrutamento.</p>
-              <span class="journey__gain">+ rotinas de departamento pessoal</span>
-            </li>
-          </ol>
-        </div>
+    <section class="sec" id="trajetoria">
+      <div class="sec__head"><p class="kicker">Trajetória</p><h2>Cada etapa somou uma competência</h2></div>
+      <div class="timeline">
+        <article class="card job"><div class="job__top"><h3>Auxiliar de Escritório</h3><time>jun/2026 — atual</time></div><p class="org">CREA-RJ</p>
+          <p>Controle de contratos de obras, facilities e locações, contas a pagar, administração de imóveis e frota. Desenvolvo os painéis que a equipe consulta.</p><span class="gain">+ controle contratual · liquidação · sistemas de planilhas</span></article>
+        <article class="card job"><div class="job__top"><h3>Estagiário em Licitações e Contratos</h3><time>ago/2025 — jun/2026</time></div><p class="org">CREA-RJ · CLIC</p>
+          <p>Pesquisa de preços para contratações públicas e apoio à análise de editais e termos de referência.</p><span class="gain">+ pesquisa de preços · Lei 14.133</span></article>
+        <article class="card job"><div class="job__top"><h3>Estagiário Administrativo — Perícia Médica</h3><time>2023 — 2025</time></div><p class="org">INSS</p>
+          <p>Abertura, instrução e tramitação de processos no SEI, incluindo documentos sigilosos.</p><span class="gain">+ processo administrativo · SEI · sigilo</span></article>
+        <article class="card job"><div class="job__top"><h3>Auxiliar Administrativo</h3><time>jan/2020 — jan/2021</time></div><p class="org">ECONIT Engenharia Ambiental</p>
+          <p>Folha de ponto, benefícios, documentação de colaboradores e recrutamento.</p><span class="gain">+ rotinas de departamento pessoal</span></article>
+      </div>
+    </section>
 
-        <aside class="study">
-          <h3>Formação</h3>
-          <ul class="study__list">
+    <!-- FORMAÇÃO -->
+    <section class="sec" id="formacao">
+      <div class="sec__head"><p class="kicker">Formação</p><h2>Estudo e cursos</h2></div>
+      <div class="bento">
+        <div class="card s5"><h3>Formação acadêmica</h3>
+          <ul class="edu" style="margin-top:10px">
             <li><b>Bacharelado em Administração</b><span>UNIFATECIE · previsão jun/2028</span></li>
             <li><b>Tecnólogo em Gestão de Serviços Judiciais</b><span>Gran Centro Universitário · previsão mai/2028</span></li>
             <li><b>Técnico em Administração</b><span>SENAI · concluído em 2021</span></li>
-          </ul>
-          <h3>Cursos</h3>
-          <ul class="study__list study__list--compact">
-            <li>Gestão Estratégica e Contratos <span>Escola Virtual.Gov · 365 h</span></li>
-            <li>Licitações e Contratos Administrativos <span>ENAP · 40 h</span></li>
-            <li>Direito Administrativo <span>ENAP · 40 h</span></li>
-            <li>Termos de Referência na Nova Lei <span>ENAP · 20 h</span></li>
-            <li>Nova Lei de Licitações <span>Udemy · 15 h</span></li>
-            <li>Engenharia de Prompt <span>Gran Faculdade · 30 h</span></li>
-            <li>Agentes Inteligentes <span>Gran Faculdade · 30 h</span></li>
-          </ul>
-          <a class='btn btn--ghost btn--block' href='/curriculo'>Ver currículo completo</a>
-        </aside>
+          </ul></div>
+        <div class="card s7"><h3>Formação complementar</h3>
+          <ul class="edu" style="margin-top:10px">
+            <li>Gestão Estratégica e Contratos<span>Escola Virtual.Gov · 365 h</span></li>
+            <li>Licitações e Contratos Administrativos<span>ENAP · 40 h</span></li>
+            <li>Direito Administrativo<span>ENAP · 40 h</span></li>
+            <li>Termos de Referência na Nova Lei de Licitações<span>ENAP · 20 h</span></li>
+            <li>Nova Lei de Licitações e Contratos<span>Udemy · 15 h</span></li>
+            <li>Engenharia de Prompt<span>Gran Faculdade · 30 h</span></li>
+            <li>Agentes Inteligentes<span>Gran Faculdade · 30 h</span></li>
+          </ul></div>
       </div>
     </section>
 
     <!-- CONTATO -->
-    <section id="contato" class="section section--cta">
-      <div class="wrap cta">
-        <p class="eyebrow">Contato</p>
+    <section class="sec" id="contato">
+      <div class="card cta">
         <h2>Tem uma rotina que vive de planilha solta?</h2>
-        <p class="section__lead">Vamos conversar sobre oportunidades, contratos, processos ou aquele controle que ninguém consegue manter atualizado.</p>
-        <div class="hero__actions hero__actions--center">
-          <a class="btn btn--primary" href="mailto:kleytons67@gmail.com">kleytons67@gmail.com</a>
-          <a class="btn btn--ghost" href="https://www.linkedin.com/in/kleyton-gon%C3%A7alves-silva/" target="_blank" rel="noopener">LinkedIn</a>
+        <p>Vamos conversar sobre oportunidades, contratos, processos ou aquele controle que ninguém consegue manter atualizado.</p>
+        <div class="hero__cta">
+          <a class="btn btn--w" href="mailto:kleytons67@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>kleytons67@gmail.com</a>
+          <a class="btn btn--o" href="https://www.linkedin.com/in/kleyton-gon%C3%A7alves-silva/"><svg class="icon"><use href="#i-link"/></svg>LinkedIn</a>
+          <a class="btn btn--o" href="curriculo"><svg class="icon"><use href="#i-file"/></svg>Currículo completo</a>
         </div>
       </div>
     </section>
+    <p class="foot">Kleyton Gonçalves Silva · Niterói, RJ · Demonstrações com dados fictícios.</p>
   </main>
-
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <span>© <span id="year"></span> Kleyton Gonçalves Silva · Niterói, RJ</span>
-      <span>Demonstrações com dados fictícios, criadas para este portfólio.</span>
-    </div>
-  </footer>
-
-  <script src="assets/app.js?v=2" defer></script>
+</div>
+<script src="assets/v3.js" defer></script>
 </body>
 </html>
-<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="ed1214e1-90ff-4fe2-877e-d25c782838b1" data-app-host="app.netlify.com" data-account-tier="free"></script>
