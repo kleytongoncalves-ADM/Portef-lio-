@@ -3,281 +3,813 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kleyton Gonçalves — Contratos e controles em planilhas</title>
-  <meta name="description" content="Kleyton Gonçalves Silva: controle contratual, contas a pagar, pesquisa de preços e sistemas de controle em Google Planilhas e Apps Script. Teste os simuladores de saldo e de renovação.">
-  <meta name="theme-color" content="#0b2a5b">
-  <link rel="canonical" href="https://kleyton-adm.netlify.app/">
+  <title>Kleyton Gonçalves Silva · Data Intelligence e Gestão Estratégica</title>
+  <meta name="description" content="Kleyton Gonçalves Silva: sistemas de controle, painéis gerenciais e automação em Google Planilhas e Apps Script, que transformam informações administrativas e financeiras em inteligência para decisões. Demonstrações interativas com dados fictícios.">
+  <meta name="author" content="Kleyton Gonçalves Silva">
+  <meta name="theme-color" content="#080B0D">
+  <link rel="canonical" href="https://kleytongoncalves-adm.github.io/Portef-lio-/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:url" content="https://kleyton-adm.netlify.app/">
-  <meta property="og:title" content="Kleyton Gonçalves — Sistemas que avisam antes do problema">
-  <meta property="og:description" content="Contratos, contas a pagar e pesquisa de preços, com controles em Google Planilhas e Apps Script.">
-  <meta property="og:image" content="https://kleyton-adm.netlify.app/assets/og.png">
+  <meta property="og:site_name" content="Kleyton Gonçalves Silva">
+  <meta property="og:url" content="https://kleytongoncalves-adm.github.io/Portef-lio-/">
+  <meta property="og:title" content="Kleyton Gonçalves Silva · Dados organizados. Inteligência aplicada. Decisões melhores.">
+  <meta property="og:description" content="Sistemas de controle, painéis gerenciais e automação que transformam informações administrativas e financeiras em clareza e previsibilidade.">
+  <meta property="og:image" content="https://kleytongoncalves-adm.github.io/Portef-lio-/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
   <script>
     try { var t = localStorage.getItem('tema'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    document.documentElement.classList.add('js');
     if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('rv');
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/v4.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></symbol>
-    <symbol id="i-brief" viewBox="0 0 24 24"><path d="M3 8h18v12H3zM8 8V5h8v3M3 13h18"/></symbol>
-    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
-    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L5 19a1 1 0 001 1h12a1 1 0 001-1l-5-10V3M8 14h8"/></symbol>
-    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v5l3 2"/></symbol>
-    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5zM6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 7 9-7"/></symbol>
-    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3A4 4 0 0010 18.7l1-1"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3A4 4 0 0010 18.7l1-1"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 7 9-7"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><path d="M9 9h11v11H9zM5 15V4h11"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14A8 8 0 1110 4a7 7 0 0010 10z"/></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
-    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7h16a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2zM3 7l2-3h12M16 13h3"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5"/></symbol>
-    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM8 12l3 3 5-6"/></symbol>
     <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2zM12 10v5M12 18h.01"/></symbol>
     <symbol id="i-info" viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM12 11v5M12 8h.01"/></symbol>
-    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></symbol>
-    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M12 9h8v12M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/></symbol>
-    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16v-5l2-5h10l2 5v5M3 16h18M7 19v-3M17 19v-3M7 12h10"/></symbol>
-    <symbol id="i-copy" viewBox="0 0 24 24"><path d="M9 9h11v11H9zM5 15V4h11"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 8V3h10v5M6 17H4v-7h16v7h-2M7 14h10v7H7z"/></symbol>
+    <symbol id="i-sync" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0114-5.3L20 9M20 4v5h-5M20 12a8 8 0 01-14 5.3L4 15M4 20v-5h5"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><path d="M12 3c4.4 0 8 1.3 8 3s-3.6 3-8 3-8-1.3-8-3 3.6-3 8-3zM4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></symbol>
+    <symbol id="i-window" viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 9h18M6 7h.01M9 7h.01"/></symbol>
   </defs>
 </svg>
 
-<div class="progress" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><i></i></div>
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 
-<div class="shell">
-  <aside class="side" aria-label="Menu principal">
-    <a class="who" href="#inicio" aria-label="Kleyton Gonçalves, início">
-      <span class="mono" aria-hidden="true">KG</span>
-      <span><strong>Kleyton Gonçalves</strong><span class="sub">Auxiliar de Escritório · CREA-RJ</span></span>
+<header class="top">
+  <div class="top__in">
+    <a class="brand" href="#inicio" aria-label="Kleyton Gonçalves Silva, início">
+      <img src="assets/mark.svg" width="30" height="30" alt="">
+      <span>Kleyton<b>.</b>G</span>
     </a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>Menu</button>
-    <div class="drawer" id="menu"><div class="drawer__in">
-      <nav class="nav" aria-label="Seções">
-        <a href="#inicio" aria-current="true"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg>Início</a>
-        <a href="#competencias" aria-current="false"><svg class="icon" aria-hidden="true"><use href="#i-brief"/></svg>Competências</a>
-        <a href="#projetos" aria-current="false"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>Projetos</a>
-        <a href="#lab" aria-current="false"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg>Laboratório</a>
-        <a href="#principios" aria-current="false"><svg class="icon" aria-hidden="true"><use href="#i-scale"/></svg>Princípios</a>
-        <a href="#trajetoria" aria-current="false"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Trajetória</a>
-        <a href="#formacao" aria-current="false"><svg class="icon" aria-hidden="true"><use href="#i-cap"/></svg>Formação</a>
-        <a href="#contato" aria-current="false"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Contato</a>
-      </nav>
-      <div class="side__foot">
-        <a class="pill pill--solid" href="curriculo"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Ver currículo</a>
-        <a class="pill" href="https://www.linkedin.com/in/kleyton-gon%C3%A7alves-silva/" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg>LinkedIn</a>
-        <button class="pill" id="tema" type="button" aria-label="Mudar para o tema escuro"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg><span>Tema escuro</span></button>
-      </div>
-    </div></div>
-  </aside>
+    <nav class="nav" id="nav" aria-label="Seções">
+      <a href="#atuacao">Atuação</a>
+      <a href="#case">Case</a>
+      <a href="#escala">Escala</a>
+      <a href="#analises">Análises</a>
+      <a href="#sistemas">Sistemas</a>
+      <a href="#arquitetura">Arquitetura</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#formacao">Formação</a>
+      <a href="#contato" class="nav__m">Contato</a>
+      <a href="curriculo.html" class="nav__m">Currículo</a>
+    </nav>
+    <div class="top__r">
+      <button class="iconbtn" id="tema" type="button" aria-label="Mudar para o tema claro"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg></button>
+      <a class="btn btn--sm btn--ghost hide-sm" href="curriculo.html"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Currículo</a>
+      <button class="iconbtn menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
 
-  <main class="main" id="conteudo">
+<main id="conteudo">
 
-    <!-- INÍCIO -->
-    <section class="sec" id="inicio" aria-labelledby="t-inicio">
-      <div class="bento">
-        <div class="card hero s12">
-          <p class="kicker">Administração · Contratos · Planilhas</p>
-          <h1 id="t-inicio">Rotinas administrativas viram sistemas que <em>avisam antes</em> do problema.</h1>
-          <p>Sou Kleyton Gonçalves Silva, de Niterói (RJ). No CREA-RJ, cuido de contratos, pagamentos, imóveis e frota, e construo em Google Planilhas os controles que deixam prazos, saldos e pendências à vista de quem decide.</p>
-          <div class="cta-row">
-            <a class="btn btn--white" href="#lab"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg>Testar os simuladores</a>
-            <a class="btn btn--outline" href="#projetos"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>Ver projetos</a>
-          </div>
-        </div>
-        <div class="card stat s4"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg><strong>CREA-RJ</strong><span>Auxiliar de Escritório desde jun/2026</span></div>
-        <div class="card stat s4"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><strong>5 sistemas</strong><span>de controle em Google Planilhas</span></div>
-        <div class="card stat s4"><svg class="icon" aria-hidden="true"><use href="#i-scale"/></svg><strong>Lei 14.133</strong><span>contratações públicas</span></div>
-
-        <div class="card s12">
-          <div class="live__head">
-            <div><h3>Painel de contratos</h3><span class="tag" style="margin-top:6px">Dados fictícios</span></div>
-            <div class="filters" role="group" aria-label="Filtrar por situação">
-              <button class="fbtn" type="button" data-f="all" aria-pressed="true">Todos</button>
-              <button class="fbtn" type="button" data-f="ok" aria-pressed="false">Regular</button>
-              <button class="fbtn" type="button" data-f="warn" aria-pressed="false">Renovar</button>
-              <button class="fbtn" type="button" data-f="bad" aria-pressed="false">Insuficiência</button>
-            </div>
-          </div>
-          <div class="tblwrap" tabindex="0" role="region" aria-label="Tabela de contratos fictícios">
-            <table class="tbl" id="contratos">
-              <thead><tr><th scope="col">Contrato</th><th scope="col">Término</th><th scope="col">Saldo projetado</th><th scope="col">Situação</th></tr></thead>
-              <tbody>
-                <tr data-s="ok"><td>CT-014 Limpeza</td><td>26 mai. 2027</td><td>R$ 48.200</td><td><span class="chip ok">Regular</span></td></tr>
-                <tr data-s="warn"><td>CT-022 Manutenção</td><td>01 fev. 2027</td><td>R$ 12.650</td><td><span class="chip warn">Renovar</span></td></tr>
-                <tr data-s="bad"><td>CT-031 Vigilância</td><td>24 ago. 2027</td><td>−R$ 3.420</td><td><span class="chip bad">Insuficiência</span></td></tr>
-                <tr data-s="warn"><td>CT-047 Elevadores</td><td>08 dez. 2026</td><td>R$ 7.800</td><td><span class="chip warn">Renovar</span></td></tr>
-                <tr data-s="ok"><td>CT-052 Jardinagem</td><td>26 abr. 2027</td><td>R$ 21.900</td><td><span class="chip ok">Regular</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="tstatus" id="tstatus" aria-live="polite">Mostrando 5 de 5 contratos.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPETÊNCIAS -->
-    <section class="sec" id="competencias" aria-labelledby="t-comp">
-      <div class="sec__head"><p class="kicker">Competências</p><h2 id="t-comp">O que eu faço no dia a dia</h2><p>Seis frentes de trabalho, com o que cada uma envolve na prática.</p></div>
-      <div class="bento">
-        <article class="card s4"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></div><h3>Controle contratual</h3>
-          <p>Ciclo de vida do contrato: vigência, termos aditivos, distratos, repactuações, saldo de empenho e janela de renovação.</p>
-          <ul class="dots"><li>Separo serviço e material para que um saldo não esconda o outro.</li><li>Calculo o saldo projetado: empenho + aditivos − lançamentos − competências por vir.</li><li>Sinalizo a renovação 120 dias antes do término.</li></ul></article>
-        <article class="card s4"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg></div><h3>Contas a pagar e liquidação</h3>
-          <p>Confiro a documentação que sustenta cada pagamento antes de ele seguir no processo.</p>
-          <ul class="dots"><li>Notas fiscais e certidões fiscais e trabalhistas para a liquidação.</li><li>Lançamentos em contas a pagar e emissão de protocolos.</li><li>Distingo lançado de pago: registro não comprova quitação.</li></ul></article>
-        <article class="card s4"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg></div><h3>Pesquisa de preços</h3>
-          <p>Estimativas de preço para contratações públicas, com várias fontes de referência.</p>
-          <ul class="dots"><li>PNCP, Compras.gov.br, Banco de Preços e mídia especializada.</li><li>Média e mediana por item; comparação de propostas.</li><li>Apoio à análise de editais e termos de referência.</li></ul></article>
-        <article class="card s4"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></div><h3>Arquitetura de planilhas</h3>
-          <p>Sistemas em camadas: registro, importação, tratamento, regras e painel.</p>
-          <ul class="dots"><li>IMPORTRANGE entre arquivos operacionais e bases auxiliares.</li><li>Painéis gerenciais de vigências, pagamentos e saldos.</li></ul></article>
-        <article class="card s4"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></div><h3>Qualidade e conferência de dados</h3>
-          <p>Regras escritas para achar o que merece conferência.</p>
-          <ul class="dots"><li>Duplicidades e abastecimentos repetidos.</li><li>Validação de hodômetro e consumo.</li><li>Pendência de lançamento × pendência de dados.</li></ul></article>
-        <article class="card s4"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-bolt"/></svg></div><h3>Automação, IA e documentação</h3>
-          <p>Apps Script, engenharia de prompt e IA generativa na rotina.</p>
-          <ul class="dots"><li>Instalador em Apps Script que restaura fórmulas a partir de um manifesto.</li><li>Guias de uso dos controles.</li></ul></article>
-      </div>
-      <ul class="chips" aria-label="Ferramentas">
-        <li><span>Google Planilhas</span></li><li><span>Excel</span></li><li><span>Word</span></li><li><span>Apps Script</span></li><li><span>SEI</span></li><li><span>PNCP</span></li><li><span>Compras.gov.br</span></li><li><span>Banco de Preços</span></li><li><span>IA generativa</span></li>
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio" aria-labelledby="t-hero">
+  <svg class="net" aria-hidden="true" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+    <g class="net__l">
+      <path d="M80 120L260 210L420 140L610 250L790 170L980 260L1140 190"/>
+      <path d="M140 420L300 340L470 450L640 380L820 470L1010 390L1160 460"/>
+      <path d="M260 210L300 340M420 140L470 450M610 250L640 380M790 170L820 470M980 260L1010 390"/>
+      <path d="M40 620L220 560L400 610L590 540L770 600L960 550L1180 610"/>
+    </g>
+    <g class="net__n">
+      <circle cx="260" cy="210" r="3"/><circle cx="420" cy="140" r="3"/><circle cx="610" cy="250" r="3"/><circle cx="790" cy="170" r="3"/><circle cx="980" cy="260" r="3"/>
+      <circle cx="300" cy="340" r="3"/><circle cx="470" cy="450" r="3"/><circle cx="640" cy="380" r="3"/><circle cx="820" cy="470" r="3"/><circle cx="1010" cy="390" r="3"/>
+    </g>
+    <path class="net__pulse" d="M80 120L260 210L300 340L470 450L640 380L610 250L790 170L820 470L1010 390L1160 460"/>
+  </svg>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Kleyton Gonçalves Silva</p>
+      <h1 id="t-hero">Dados organizados. <span class="hl">Inteligência aplicada.</span> Decisões melhores.</h1>
+      <p class="lead">Atuo no desenvolvimento de sistemas de controle, análise de informações e inteligência gerencial, conectando administração, dados e automação para transformar processos complexos em informações claras e úteis.</p>
+      <ul class="specs" aria-label="Especialidades">
+        <li>Data Analytics</li><li>Business Intelligence</li><li>Gestão Financeira</li><li>Automação</li>
       </ul>
-    </section>
-
-    <!-- PROJETOS -->
-    <section class="sec" id="projetos" aria-labelledby="t-proj">
-      <div class="sec__head"><p class="kicker">Projetos</p><h2 id="t-proj">Sistemas de controle em planilhas</h2><p>Cinco sistemas desenvolvidos no Google Planilhas e a arquitetura que os integra. As demonstrações usam apenas dados fictícios.</p></div>
-      <div class="bento">
-        <article class="card proj s6"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></div><h3>Obras e Facilities</h3><p>Saldo atual e projetado por ciclo financeiro, separação entre serviço e material, alerta de insuficiência e janela de renovação de 120 dias.</p><ul class="chips"><li><span>Saldo projetado</span></li><li><span>Renovação</span></li></ul></article>
-        <article class="card proj s6"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg></div><h3>Imóveis</h3><p>Despesas por imóvel (aluguel, condomínio, IPTU e taxas), com a distinção entre a pendência de lançamento e a pendência de dados.</p><ul class="chips"><li><span>Vencimentos</span></li><li><span>Pendências</span></li></ul></article>
-        <article class="card proj s6"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></div><h3>Frota</h3><p>Validação de hodômetro e consumo (km/L), detecção de abastecimentos repetidos e possíveis duplicidades financeiras.</p><ul class="chips"><li><span>km/L</span></li><li><span>Duplicidades</span></li></ul></article>
-        <article class="card proj s6"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></div><h3>Estacionamento</h3><p>Contratos, vagas e valores, sem converter o valor global em mensalidade nem contar duas vezes.</p><ul class="chips"><li><span>Contratos</span></li><li><span>Vagas</span></li></ul></article>
-        <article class="card proj s6"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg></div><h3>Mapa de Preço</h3><p>Comparação de referências e propostas, com média e mediana e o tratamento de propostas incompletas.</p><ul class="chips"><li><span>Média e mediana</span></li><li><span>Propostas</span></li></ul></article>
-        <article class="card proj s6"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-bolt"/></svg></div><h3>Arquitetura e automação</h3><p>Arquivos integrados por IMPORTRANGE e um instalador em Apps Script que restaura fórmulas a partir de um manifesto.</p>
-          <ol class="stack" aria-label="Camadas da arquitetura"><li><b>1</b>Planilha operacional (registro)</li><li><b>2</b>Base auxiliar (importação e tratamento)</li><li><b>3</b>Painéis (regras e consulta)</li></ol></article>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="#case">Explorar projetos<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="#trajetoria">Conhecer minha trajetória</a>
+        <a class="btn btn--ghost" href="curriculo.html"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Acessar currículo</a>
       </div>
-    </section>
+    </div>
 
-    <!-- LABORATÓRIO -->
-    <section class="sec" id="lab" aria-labelledby="t-lab">
-      <div class="sec__head"><p class="kicker">Laboratório</p><h2 id="t-lab">Teste as regras que eu uso</h2><p>Mude os valores e veja os alertas reagirem. Nenhum dado real é usado ou enviado.</p></div>
-      <div class="bento">
-        <div class="card s7" id="saldo">
-          <h3>O saldo cobre o ano?</h3>
-          <p>Contrato fictício. Saldo projetado = empenho + aditivos − lançado − (média mensal × competências restantes).</p>
-          <div class="fields">
-            <label class="field" for="emp"><span class="row">Empenho inicial <output id="emp-o" for="emp">R$ 240.000</output></span><input id="emp" type="range" min="50000" max="500000" step="5000" value="240000"></label>
-            <label class="field" for="adit"><span class="row">Aditivos <output id="adit-o" for="adit">R$ 20.000</output></span><input id="adit" type="range" min="0" max="100000" step="2500" value="20000"></label>
-            <label class="field" for="lanc"><span class="row">Já lançado <output id="lanc-o" for="lanc">R$ 150.000</output></span><input id="lanc" type="range" min="0" max="500000" step="2500" value="150000"></label>
-            <label class="field" for="med"><span class="row">Média mensal <output id="med-o" for="med">R$ 18.500</output></span><input id="med" type="range" min="1000" max="60000" step="500" value="18500"></label>
-            <label class="field" for="comp"><span class="row">Competências restantes <output id="comp-o" for="comp">6 meses</output></span><input id="comp" type="range" min="1" max="12" step="1" value="6"></label>
+    <div class="console" role="region" aria-label="Painel demonstrativo de inteligência gerencial com dados fictícios">
+      <div class="console__bar">
+        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="mono">centro-de-inteligencia / visão geral</span>
+        <span class="tag tag--demo">Dados fictícios</span>
+      </div>
+      <div class="console__body">
+        <div class="kpis4">
+          <div class="kpi"><span>Executado no ano</span><strong class="mono" data-count="exec">—</strong><em class="mono up" id="h-exec-d">—</em></div>
+          <div class="kpi"><span>Saldo disponível</span><strong class="mono" data-count="saldo">—</strong><em class="mono" id="h-saldo-d">—</em></div>
+          <div class="kpi"><span>Contratos em risco</span><strong class="mono" data-count="risco">—</strong><em class="mono warn">projeção negativa</em></div>
+          <div class="kpi"><span>Pagos no prazo</span><strong class="mono" data-count="prazo">—</strong><em class="mono">base de contas</em></div>
+        </div>
+        <div class="console__grid">
+          <figure class="panel panel--line">
+            <figcaption><b>Evolução mensal das despesas</b><span class="mono">2026 · projeção tracejada</span></figcaption>
+            <div class="chart" id="h-line"></div>
+          </figure>
+          <figure class="panel panel--donut">
+            <figcaption><b>Distribuição</b><span class="mono">acumulado</span></figcaption>
+            <div class="chart" id="h-donut"></div>
+          </figure>
+          <figure class="panel panel--proj">
+            <figcaption><b>Saldo projetado até o fim da vigência</b><span class="mono">por contrato</span></figcaption>
+            <div class="chart" id="h-proj"></div>
+          </figure>
+          <div class="panel panel--alerts">
+            <p class="ptitle"><b>Alertas</b><span class="live mono"><i aria-hidden="true"></i>simulação</span></p>
+            <ul class="alerts" id="h-alerts" aria-live="off"></ul>
           </div>
-          <div class="kpis">
-            <div class="kpi"><span>Saldo atual</span><strong id="k-atual">R$ 110.000</strong></div>
-            <div class="kpi"><span>Previsão restante</span><strong id="k-prev">R$ 111.000</strong></div>
-            <div class="kpi bad" id="kp"><span>Saldo projetado</span><strong id="k-proj">−R$ 1.000</strong></div>
-          </div>
-          <div class="bar" role="img" aria-label="Composição do empenho total: lançado, previsto e livre"><i class="a" id="seg-a" style="width:57.7%"></i><i class="b" id="seg-b" style="width:42.3%"></i><i class="c" id="seg-c" style="width:0%"></i></div>
-          <ul class="legend">
-            <li><i style="background:var(--navy)"></i>Lançado <b id="lg-a">R$ 150.000</b></li>
-            <li><i style="background:var(--blue)"></i>Previsto <b id="lg-b">R$ 110.000</b></li>
-            <li><i style="background:var(--sky)"></i>Livre <b id="lg-c">R$ 0</b></li>
+        </div>
+        <div class="flowline" aria-hidden="true">
+          <span>Entrada</span><i></i><span>Validação</span><i></i><span>Consolidação</span><i></i><span>Painéis</span><i></i><span>Decisão</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="concept"><span>Transformando dados em inteligência.</span> <span>Inteligência em decisões.</span></p>
+  </div>
+</section>
+
+<!-- ============ O QUE EU FAÇO ============ -->
+<section class="sec" id="atuacao" aria-labelledby="t-atu">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="kicker mono">01 · O que eu faço</p>
+      <h2 id="t-atu">Transformo rotinas administrativas em processos organizados, mensuráveis e previsíveis.</h2>
+      <p>Desenvolvo sistemas de controle, painéis gerenciais e soluções de análise que transformam informações administrativas e financeiras em clareza, previsibilidade e inteligência para a tomada de decisões. Estas são as frentes que sei estruturar, cada uma com um exemplo do tipo de informação analisada.</p>
+    </header>
+
+    <div class="domains">
+      <article class="domain">
+        <div class="domain__h"><span class="num mono">A</span><h3>Gestão financeira e contratual</h3></div>
+        <p>Estruturo o acompanhamento da execução financeira de contratos para saber, a qualquer momento, o que foi contratado, empenhado, pago e o que ainda resta, antecipando quando um saldo pode acabar antes do fim da vigência.</p>
+        <ul class="tags"><li>Valores contratados</li><li>Empenhos</li><li>Saldos</li><li>Aditivos</li><li>Vigências</li><li>Renovações</li><li>Projeções</li><li>Risco de insuficiência</li></ul>
+        <div class="sample"><span class="mono">exemplo</span><div class="minibar"><i style="--w:62%"></i><i class="b" style="--w:30%"></i></div><p class="mono">executado 62% · previsto 30% · <b class="ok-t">livre 8%</b></p></div>
+      </article>
+      <article class="domain">
+        <div class="domain__h"><span class="num mono">B</span><h3>Imóveis e despesas recorrentes</h3></div>
+        <p>Organizo despesas por imóvel, próprio ou locado, com seus compromissos, vencimentos e histórico, separando o que falta lançar do que falta informar.</p>
+        <ul class="tags"><li>Aluguéis</li><li>Condomínios</li><li>IPTU</li><li>Taxas</li><li>Vencimentos</li><li>Histórico</li></ul>
+        <div class="sample"><span class="mono">exemplo</span><p class="mono">Unidade Norte · taxas <b class="warn-t">sem informação</b> ≠ R$ 0</p></div>
+      </article>
+      <article class="domain">
+        <div class="domain__h"><span class="num mono">C</span><h3>Contas de consumo</h3></div>
+        <p>Estruturo o acompanhamento de energia e água por medidor e agrupamento, comparando períodos para destacar variações que merecem verificação.</p>
+        <ul class="tags"><li>Medidores</li><li>Agrupamentos</li><li>Consumo</li><li>Valores</li><li>Leituras</li><li>Comparações</li></ul>
+        <div class="sample"><span class="mono">exemplo</span><div class="spark" data-spark="9,10,9,11,10,10,14,10,11,10"></div><p class="mono">jul · <b class="warn-t">+34%</b> sobre o mesmo mês do ano anterior</p></div>
+      </article>
+      <article class="domain">
+        <div class="domain__h"><span class="num mono">D</span><h3>Frota e mobilidade</h3></div>
+        <p>Organizo registros de abastecimento, quilometragem e manutenção com regras de conferência que apontam consumo fora do padrão e possíveis duplicidades.</p>
+        <ul class="tags"><li>Abastecimentos</li><li>Quilometragem</li><li>km/L</li><li>Manutenções</li><li>Pedágio e TAG</li><li>Duplicidades</li></ul>
+        <div class="sample"><span class="mono">exemplo</span><p class="mono">VEI-02 · 04/10 · 48 L · <b class="bad-t">registro repetido</b></p></div>
+      </article>
+      <article class="domain">
+        <div class="domain__h"><span class="num mono">E</span><h3>Fluxo de pagamentos e documentação</h3></div>
+        <p>Estruturo o acompanhamento do fluxo de pagamento e da documentação que o sustenta, com prazos, situação de cada etapa e pendências à vista.</p>
+        <ul class="tags"><li>Notas fiscais</li><li>Protocolos</li><li>Valores bruto e líquido</li><li>Certidões</li><li>Vencimentos</li><li>Pendências</li></ul>
+        <div class="sample"><span class="mono">exemplo</span><div class="steps mono"><span class="on">Protocolo</span><span class="on">Conferência</span><span class="cur">Contabilidade</span><span>Pago</span></div></div>
+      </article>
+      <article class="domain">
+        <div class="domain__h"><span class="num mono">F</span><h3>Análise de dados e inteligência gerencial</h3></div>
+        <p>Transformo registros operacionais em indicadores, comparações, projeções e alertas que apoiam decisões administrativas e financeiras.</p>
+        <ul class="tags"><li>Indicadores</li><li>Relatórios</li><li>Projeções</li><li>Alertas</li><li>Análise de risco</li><li>Histórico de ocorrências</li></ul>
+        <div class="sample"><span class="mono">exemplo</span><p class="mono">3 contratos exigem atenção · <b class="ok-t">prioridade definida</b></p></div>
+      </article>
+    </div>
+
+    <div class="competencias">
+      <h3 class="mono">Competências desenvolvidas</h3>
+      <ul>
+        <li>Organização e gestão da informação</li><li>Análise de dados administrativos</li><li>Inteligência gerencial</li><li>Controle e acompanhamento de indicadores</li><li>Automação de processos</li><li>Ferramentas de apoio à decisão</li><li>Gestão documental</li><li>Planejamento e controle administrativo</li><li>Resolução de problemas</li><li>Melhoria contínua de processos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE PRINCIPAL ============ -->
+<section class="sec sec--case" id="case" aria-labelledby="t-case">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="kicker mono">02 · Projeto principal</p>
+      <h2 id="t-case">Sistema Integrado de Gestão Financeira e Contratual</h2>
+      <p>Uma arquitetura integrada para organizar pagamentos, acompanhar contratos, analisar despesas, antecipar riscos e apoiar decisões gerenciais. Concebido, desenvolvido e mantido por mim, de ponta a ponta.</p>
+      <p class="note"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Iniciativa própria apresentada com estrutura genérica e dados fictícios. Nenhum dado, nome ou valor real é exibido.</p>
+    </header>
+
+    <div class="layers" role="tablist" aria-label="Camadas do sistema">
+      <button class="layer" role="tab" id="tab-l1" aria-controls="pn-l1" aria-selected="true"><span class="mono">Camada 1</span><b>Planilha operacional</b><small>entrada, organização e validação</small></button>
+      <button class="layer" role="tab" id="tab-l2" aria-controls="pn-l2" aria-selected="false" tabindex="-1"><span class="mono">Camada 2</span><b>Painéis gerenciais</b><small>análise e acompanhamento</small></button>
+      <button class="layer" role="tab" id="tab-l3" aria-controls="pn-l3" aria-selected="false" tabindex="-1"><span class="mono">Camada 3</span><b>Aplicação web</b><small>consulta, justificativas e PDF</small></button>
+    </div>
+
+    <!-- Camada 1 -->
+    <div class="lpanel" role="tabpanel" id="pn-l1" aria-labelledby="tab-l1">
+      <div class="split">
+        <div>
+          <h3>Fonte única da informação</h3>
+          <p>A planilha operacional é onde os dados entram. Cada cadastro é registrado uma única vez; nos lançamentos mensais, o operador informa apenas o identificador e o sistema recupera automaticamente as informações cadastrais, sem redigitação.</p>
+          <ul class="checks">
+            <li>Cadastro de contratos, imóveis, estacionamentos e medidores</li>
+            <li>Lançamentos mensais com conferência de valores</li>
+            <li>Controle de notas fiscais, protocolos e pagamentos</li>
+            <li>Controle de empenhos e aditivos</li>
+            <li>Histórico financeiro e base de justificativas</li>
           </ul>
-          <p class="verdict bad" id="verdict" role="status"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Risco de insuficiência: faltam R$ 1.000. O saldo atual cobre cerca de 5 das 6 competências previstas. Hora de pedir reforço ou aditivo.</span></p>
-          <div class="actions"><button class="btn btn--primary" id="saldo-reset" type="button">Restaurar exemplo</button></div>
         </div>
-        <div class="card s5">
-          <h3>Radar de renovação</h3>
-          <p>Escolha o término de um contrato fictício. A renovação é sinalizada 120 dias antes.</p>
-          <div class="fields"><label class="field" for="termino">Término da vigência<input id="termino" type="date"></label></div>
-          <div class="kpis" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-            <div class="kpi"><span id="radar-lab">Faltam</span><strong id="radar-dias">—</strong></div>
-            <div class="kpi"><span>Situação</span><strong><span class="chip" id="radar-chip">—</span></strong></div>
+        <div class="ssot" aria-label="Demonstração: lançamento que recupera dados do cadastro">
+          <div class="ssot__src">
+            <p class="mono lbl">cadastro · contratos</p>
+            <table class="mini"><thead><tr><th scope="col">ID</th><th scope="col">Objeto</th><th scope="col">Vigência</th></tr></thead>
+              <tbody id="ssot-cad"></tbody></table>
           </div>
-          <p class="verdict" id="radar" role="status"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>Escolha uma data para ver a situação do contrato.</span></p>
+          <div class="ssot__arrow" aria-hidden="true"><i></i></div>
+          <div class="ssot__form">
+            <p class="mono lbl">lançamento mensal</p>
+            <label class="field">Contrato<select id="ssot-sel"></select></label>
+            <dl class="auto" id="ssot-out" aria-live="polite"></dl>
+            <p class="mono hint">Campos recuperados automaticamente do cadastro</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- PRINCÍPIOS -->
-    <section class="sec" id="principios" aria-labelledby="t-prin">
-      <div class="sec__head"><p class="kicker">Princípios</p><h2 id="t-prin">Distinções que evitam decisões erradas</h2><p>Um painel bonito que mistura conceitos engana quem decide. Estas regras estão em todos os meus controles.</p></div>
-      <div class="bento">
-        <article class="card s4 pair-card"><div class="pair"><span>Vazio</span><b aria-label="não é">≠</b><span>Zero</span></div><p>A falta de informação continua sendo falta de informação. Nenhum campo vazio vira número inventado.</p></article>
-        <article class="card s4 pair-card"><div class="pair"><span>Lançado</span><b aria-label="não é">≠</b><span>Pago</span></div><p>Um valor registrado mostra o lançamento. A quitação depende de confirmação financeira.</p></article>
-        <article class="card s4 pair-card"><div class="pair"><span>Alerta</span><b aria-label="não é">≠</b><span>Irregularidade</span></div><p>Uma ocorrência aponta onde olhar. A conclusão vem da conferência, não da fórmula.</p></article>
-        <article class="card s4 pair-card"><div class="pair"><span>Vigência</span><b aria-label="não é">≠</b><span>Vencimento</span></div><p>O prazo do contrato e a data de pagamento da despesa são controles diferentes.</p></article>
-        <article class="card s4 pair-card"><div class="pair"><span>Valor global</span><b aria-label="não é">≠</b><span>Mensalidade</span></div><p>A periodicidade é confirmada, nunca presumida, antes de virar uma previsão mensal.</p></article>
-        <article class="card s4 pair-card"><div class="pair"><span>Conectado</span><b aria-label="não é">≠</b><span>Atualizado</span></div><p>Uma conexão funcionando não garante que toda a base foi recalculada. Eu verifico de ponta a ponta.</p></article>
+    <!-- Camada 2 -->
+    <div class="lpanel" role="tabpanel" id="pn-l2" aria-labelledby="tab-l2" hidden>
+      <div class="split split--wide">
+        <div>
+          <h3>Painéis temáticos, organizados por assunto e com filtros</h3>
+          <p>A camada de análise lê a base operacional e monta painéis e relatórios. São ferramentas de acompanhamento, não tabelas soltas: cada painel responde a uma pergunta gerencial.</p>
+          <div class="modules" role="group" aria-label="Módulos de painéis">
+            <button type="button" class="mod" data-mod="exec" aria-pressed="true">Painel executivo</button>
+            <button type="button" class="mod" data-mod="gastos" aria-pressed="false">Análise de gastos</button>
+            <button type="button" class="mod" data-mod="contratual" aria-pressed="false">Inteligência contratual</button>
+            <button type="button" class="mod" data-mod="risco" aria-pressed="false">Risco financeiro</button>
+            <button type="button" class="mod" data-mod="atrasos" aria-pressed="false">Gestão de atrasos</button>
+            <button type="button" class="mod" data-mod="auditoria" aria-pressed="false">Auditoria e conferência</button>
+            <button type="button" class="mod" data-mod="relatorios" aria-pressed="false">Relatórios gerenciais</button>
+          </div>
+        </div>
+        <div class="modview" id="modview" aria-live="polite"></div>
       </div>
-    </section>
+    </div>
 
-    <!-- TRAJETÓRIA -->
-    <section class="sec" id="trajetoria" aria-labelledby="t-traj">
-      <div class="sec__head"><p class="kicker">Trajetória</p><h2 id="t-traj">Cada etapa somou uma competência</h2></div>
-      <ol class="timeline">
-        <li class="card job"><div class="job__top"><h3>Auxiliar de Escritório</h3><time>jun/2026 — atual</time></div><p class="org">CREA-RJ</p>
-          <p>Controle de contratos de obras, facilities e locações, contas a pagar, administração de imóveis e frota. Desenvolvo os painéis que a equipe consulta.</p><span class="gain">+ controle contratual · liquidação · sistemas de planilhas</span></li>
-        <li class="card job"><div class="job__top"><h3>Estagiário em Licitações e Contratos</h3><time>ago/2025 — jun/2026</time></div><p class="org">CREA-RJ · CLIC</p>
-          <p>Pesquisa de preços para contratações públicas e apoio à análise de editais e termos de referência.</p><span class="gain">+ pesquisa de preços · Lei 14.133</span></li>
-        <li class="card job"><div class="job__top"><h3>Estagiário Administrativo — Perícia Médica</h3><time>2023 — 2025</time></div><p class="org">INSS</p>
-          <p>Abertura, instrução e tramitação de processos no SEI, incluindo documentos sigilosos.</p><span class="gain">+ processo administrativo · SEI · sigilo</span></li>
-        <li class="card job"><div class="job__top"><h3>Auxiliar Administrativo</h3><time>jan/2020 — jan/2021</time></div><p class="org">ECONIT Engenharia Ambiental</p>
-          <p>Folha de ponto, benefícios, documentação de colaboradores e recrutamento.</p><span class="gain">+ rotinas de departamento pessoal</span></li>
-      </ol>
-    </section>
-
-    <!-- FORMAÇÃO -->
-    <section class="sec" id="formacao" aria-labelledby="t-form">
-      <div class="sec__head"><p class="kicker">Formação</p><h2 id="t-form">Estudo e cursos</h2></div>
-      <div class="bento">
-        <div class="card s5"><h3>Formação acadêmica</h3>
-          <ul class="edu" style="margin-top:10px">
-            <li><b>Bacharelado em Administração</b><span>UNIFATECIE · previsão jun/2028</span></li>
-            <li><b>Tecnólogo em Gestão de Serviços Judiciais</b><span>Gran Centro Universitário · previsão mai/2028</span></li>
-            <li><b>Técnico em Administração</b><span>SENAI · concluído em 2021</span></li>
-          </ul></div>
-        <div class="card s7"><h3>Formação complementar</h3>
-          <ul class="edu" style="margin-top:10px">
-            <li>Gestão Estratégica e Contratos<span>Escola Virtual.Gov · 365 h</span></li>
-            <li>Licitações e Contratos Administrativos<span>ENAP · 40 h</span></li>
-            <li>Direito Administrativo<span>ENAP · 40 h</span></li>
-            <li>Termos de Referência na Nova Lei de Licitações<span>ENAP · 20 h</span></li>
-            <li>Nova Lei de Licitações e Contratos<span>Udemy · 15 h</span></li>
-            <li>Engenharia de Prompt<span>Gran Faculdade · 30 h</span></li>
-            <li>Agentes Inteligentes<span>Gran Faculdade · 30 h</span></li>
-          </ul></div>
-      </div>
-    </section>
-
-    <!-- CONTATO -->
-    <section class="sec" id="contato" aria-labelledby="t-cont">
-      <div class="card cta">
-        <h2 id="t-cont">Tem uma rotina que vive de planilha solta?</h2>
-        <p>Vamos conversar sobre oportunidades, contratos, processos ou aquele controle que ninguém consegue manter atualizado.</p>
-        <div class="cta-row">
-          <a class="btn btn--white" href="mailto:kleytons67@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>kleytons67@gmail.com</a>
-          <button class="btn btn--outline" type="button" data-copy="kleytons67@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar e-mail</span></button>
-          <a class="btn btn--outline" href="https://www.linkedin.com/in/kleyton-gon%C3%A7alves-silva/" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg>LinkedIn</a>
-          <a class="btn btn--outline" href="curriculo"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Currículo completo</a>
+    <!-- Camada 3 -->
+    <div class="lpanel" role="tabpanel" id="pn-l3" aria-labelledby="tab-l3" hidden>
+      <div class="split split--wide">
+        <div>
+          <h3>Interface web em Google Apps Script</h3>
+          <p>Uma aplicação web de acesso restrito a usuários autorizados, que publica os mesmos painéis em uma interface de navegação. As justificativas registradas na aplicação voltam para a planilha por rotina automática periódica ou por atualização manual.</p>
+          <ul class="checks">
+            <li>Consultar painéis e aplicar filtros</li>
+            <li>Imprimir relatórios em PDF</li>
+            <li>Registrar justificativas, providências e responsáveis</li>
+            <li>Registrar resoluções e manter o histórico</li>
+          </ul>
+          <p class="mono hint">Teste ao lado: filtre, justifique e sincronize. Nada é enviado; tudo acontece no seu navegador.</p>
+        </div>
+        <div class="app" id="app">
+          <div class="app__bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="mono">aplicação web · painel de contratos</span><span class="tag tag--demo">Demo</span></div>
+          <div class="app__body">
+            <div class="app__head">
+              <div class="filters" role="group" aria-label="Filtrar por situação">
+                <button class="fbtn" type="button" data-f="all" aria-pressed="true">Todos</button>
+                <button class="fbtn" type="button" data-f="ok" aria-pressed="false">Regular</button>
+                <button class="fbtn" type="button" data-f="warn" aria-pressed="false">Renovar</button>
+                <button class="fbtn" type="button" data-f="bad" aria-pressed="false">Insuficiência</button>
+              </div>
+              <button class="btn btn--sm btn--ghost" type="button" id="app-print"><svg class="icon" aria-hidden="true"><use href="#i-print"/></svg>PDF</button>
+            </div>
+            <div class="tblwrap" tabindex="0" role="region" aria-label="Tabela de contratos fictícios">
+              <table class="tbl" id="contratos">
+                <thead><tr><th scope="col">Contrato</th><th scope="col">Término</th><th scope="col" class="r">Saldo projetado</th><th scope="col">Situação</th><th scope="col"><span class="sr">Ação</span></th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <p class="tstatus mono" id="tstatus" aria-live="polite"></p>
+            <form class="just" id="just" hidden>
+              <p class="mono lbl">Justificar ocorrência · <b id="just-ct"></b></p>
+              <div class="just__g">
+                <label class="field">Providência<input id="just-prov" required maxlength="120" placeholder="Ex.: solicitado reforço de empenho"></label>
+                <label class="field">Responsável<input id="just-resp" required maxlength="40" placeholder="Ex.: Equipe de contratos"></label>
+              </div>
+              <div class="just__a"><button class="btn btn--sm btn--primary" type="submit">Registrar</button><button class="btn btn--sm btn--ghost" type="button" id="just-cancel">Cancelar</button></div>
+            </form>
+            <div class="sync">
+              <p class="mono"><span id="sync-n">0</span> justificativa(s) aguardando sincronização</p>
+              <button class="btn btn--sm btn--ghost" type="button" id="sync-btn"><svg class="icon" aria-hidden="true"><use href="#i-sync"/></svg>Sincronizar agora</button>
+            </div>
+            <ul class="synclog mono" id="synclog" aria-live="polite"></ul>
+          </div>
         </div>
       </div>
-    </section>
-    <p class="foot">Kleyton Gonçalves Silva · Niterói, RJ · Demonstrações com dados fictícios.</p>
-  </main>
-</div>
+    </div>
+
+    <ol class="pipeline" aria-label="Fluxo da arquitetura integrada">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-db"/></svg><b>Planilha operacional</b><span>registro e validação</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg><b>Painéis gerenciais</b><span>regras e análise</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-window"/></svg><b>Aplicação web</b><span>interface de consulta</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><b>Consulta, análise e justificativas</b><span>ação de quem decide</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-sync"/></svg><b>Sincronização</b><span>retorno à base</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ESCALA ============ -->
+<section class="sec" id="escala" aria-labelledby="t-esc">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="kicker mono">03 · A escala do sistema</p>
+      <h2 id="t-esc">Uma estrutura feita para muitos contratos, contas e medidores ao mesmo tempo.</h2>
+      <p>Os números abaixo são calculados ao vivo a partir da <b>base fictícia</b> desta demonstração. Eles mostram o tipo de volume e de cruzamento que a arquitetura organiza, não a operação real de nenhuma instituição.</p>
+    </header>
+    <div class="scale" id="scale"></div>
+    <div class="scale__charts">
+      <figure class="card">
+        <figcaption><b>Despesas por categoria</b><span class="mono">acumulado jan–out · fictício</span></figcaption>
+        <div class="chart" id="s-cat"></div>
+      </figure>
+      <figure class="card">
+        <figcaption><b>Contas por situação</b><span class="mono">base de vencimentos · fictício</span></figcaption>
+        <div class="chart" id="s-contas"></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTELIGÊNCIA ANALÍTICA ============ -->
+<section class="sec" id="analises" aria-labelledby="t-ana">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="kicker mono">04 · Inteligência analítica na prática</p>
+      <h2 id="t-ana">O raciocínio por trás do sistema, em cinco perguntas.</h2>
+      <p>Mude os valores, aplique filtros e veja as regras reagirem. Tudo com dados fictícios, calculado no seu navegador.</p>
+    </header>
+
+    <div class="qtabs" role="tablist" aria-label="Perguntas analíticas">
+      <button role="tab" id="q1" aria-controls="qp1" aria-selected="true"><span class="mono">01</span>Um contrato pode ficar sem saldo?</button>
+      <button role="tab" id="q2" aria-controls="qp2" aria-selected="false" tabindex="-1"><span class="mono">02</span>Onde estão os atrasos?</button>
+      <button role="tab" id="q3" aria-controls="qp3" aria-selected="false" tabindex="-1"><span class="mono">03</span>O consumo está fora do padrão?</button>
+      <button role="tab" id="q4" aria-controls="qp4" aria-selected="false" tabindex="-1"><span class="mono">04</span>Os valores dos aditivos estão corretos?</button>
+      <button role="tab" id="q5" aria-controls="qp5" aria-selected="false" tabindex="-1"><span class="mono">05</span>Qual contrato precisa de atenção primeiro?</button>
+    </div>
+
+    <!-- Q1 saldo -->
+    <div class="qpanel" role="tabpanel" id="qp1" aria-labelledby="q1">
+      <div class="qgrid">
+        <div class="card" id="saldo">
+          <h3>Projeção de saldo</h3>
+          <p class="muted">Saldo projetado = empenho + aditivos − executado − (média mensal × meses restantes).</p>
+          <div class="fields">
+            <label class="field" for="emp"><span class="row">Empenho base <output class="mono" id="emp-o" for="emp">R$ 240.000</output></span><input id="emp" type="range" min="50000" max="500000" step="5000" value="240000"></label>
+            <label class="field" for="adit"><span class="row">Aditivos aprovados <output class="mono" id="adit-o" for="adit">R$ 20.000</output></span><input id="adit" type="range" min="0" max="100000" step="2500" value="20000"></label>
+            <label class="field" for="lanc"><span class="row">Pagamentos realizados <output class="mono" id="lanc-o" for="lanc">R$ 150.000</output></span><input id="lanc" type="range" min="0" max="500000" step="2500" value="150000"></label>
+            <label class="field" for="med"><span class="row">Média mensal de gastos <output class="mono" id="med-o" for="med">R$ 18.500</output></span><input id="med" type="range" min="1000" max="60000" step="500" value="18500"></label>
+            <label class="field" for="comp"><span class="row">Meses restantes <output class="mono" id="comp-o" for="comp">6 meses</output></span><input id="comp" type="range" min="1" max="12" step="1" value="6"></label>
+          </div>
+          <div class="actions"><button class="btn btn--sm btn--ghost" id="saldo-reset" type="button">Restaurar exemplo</button></div>
+        </div>
+        <div class="card">
+          <div class="kpis3">
+            <div class="kpi"><span>Saldo atual</span><strong class="mono" id="k-atual">R$ 110.000</strong></div>
+            <div class="kpi"><span>Previsão restante</span><strong class="mono" id="k-prev">R$ 111.000</strong></div>
+            <div class="kpi bad" id="kp"><span>Saldo projetado</span><strong class="mono" id="k-proj">−R$ 1.000</strong></div>
+          </div>
+          <figure class="chartfig"><figcaption class="mono">Saldo mês a mês</figcaption><div class="chart" id="saldo-chart"></div></figure>
+          <p class="verdict bad" id="verdict" role="status"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Risco de insuficiência: faltam R$ 1.000.</span></p>
+          <div class="radar">
+            <h4>Radar de renovação</h4>
+            <div class="radar__g">
+              <label class="field" for="termino">Término da vigência<input id="termino" type="date"></label>
+              <div class="kpi"><span id="radar-lab">Faltam</span><strong class="mono" id="radar-dias">—</strong></div>
+              <div class="kpi"><span>Situação</span><strong><span class="chip" id="radar-chip">—</span></strong></div>
+            </div>
+            <p class="verdict" id="radar" role="status"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>Escolha uma data para ver a situação do contrato.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 atrasos -->
+    <div class="qpanel" role="tabpanel" id="qp2" aria-labelledby="q2" hidden>
+      <div class="qgrid qgrid--r">
+        <div class="card">
+          <h3>Onde o pagamento está parado</h3>
+          <p class="muted">Contas ainda não pagas, por etapa de tramitação. Vencimento, protocolo e pagamento cruzados.</p>
+          <div class="funnel" id="funnel"></div>
+          <div class="kpis3 kpis3--tight">
+            <div class="kpi"><span>Pagas no prazo</span><strong class="mono" id="a-prazo">—</strong></div>
+            <div class="kpi"><span>Vencidas em aberto</span><strong class="mono" id="a-venc">—</strong></div>
+            <div class="kpi"><span>Tempo médio na etapa</span><strong class="mono" id="a-tempo">—</strong></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="filters" role="group" aria-label="Filtrar contas" id="a-filters">
+            <button class="fbtn2" type="button" data-f="vencida" aria-pressed="true">Vencidas</button>
+            <button class="fbtn2" type="button" data-f="proxima" aria-pressed="false">Vencem em 7 dias</button>
+            <button class="fbtn2" type="button" data-f="emdia" aria-pressed="false">Em dia</button>
+            <button class="fbtn2" type="button" data-f="pago" aria-pressed="false">Pagas</button>
+          </div>
+          <div class="tblwrap tblwrap--scroll" tabindex="0" role="region" aria-label="Contas fictícias filtradas">
+            <table class="tbl"><thead><tr><th scope="col">Conta</th><th scope="col">Favorecido</th><th scope="col">Vencimento</th><th scope="col">Etapa</th><th scope="col" class="r">Valor</th></tr></thead><tbody id="a-body"></tbody></table>
+          </div>
+          <p class="verdict warn" id="a-verdict" role="status"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span></span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 consumo -->
+    <div class="qpanel" role="tabpanel" id="qp3" aria-labelledby="q3" hidden>
+      <div class="card">
+        <div class="cons__head">
+          <label class="field">Medidor<select id="c-med"></select></label>
+          <label class="field" for="c-lim"><span class="row">Alerta acima de <output class="mono" id="c-lim-o" for="c-lim">+20%</output></span><input id="c-lim" type="range" min="10" max="50" step="5" value="20"></label>
+          <p class="muted cons__rule">Compara cada mês com o mesmo mês do ano anterior. Alerta quando sobe além do limite ou cai abaixo da metade da referência, o que costuma indicar erro de leitura ou de lançamento.</p>
+        </div>
+        <figure class="chartfig"><figcaption class="mono" id="c-cap">Consumo mensal</figcaption><div class="chart chart--tall" id="c-chart"></div></figure>
+        <ul class="legend mono"><li><i class="sw sw--ref"></i>Ano anterior</li><li><i class="sw sw--cur"></i>Ano corrente</li><li><i class="sw sw--warn"></i>Acima do limite</li><li><i class="sw sw--bad"></i>Abaixo da metade</li></ul>
+        <p class="verdict" id="c-verdict" role="status"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span></span></p>
+      </div>
+    </div>
+
+    <!-- Q4 aditivos -->
+    <div class="qpanel" role="tabpanel" id="qp4" aria-labelledby="q4" hidden>
+      <div class="qgrid qgrid--r">
+        <div class="card">
+          <h3>Validação cruzada</h3>
+          <p class="muted">Cada aditivo é conferido entre o registro de origem, o protocolo e o valor protocolado.</p>
+          <ol class="rules mono">
+            <li><b>Sem registro</b> protocolo existe, valor de origem não</li>
+            <li><b>Valor sem protocolo</b> valor registrado, protocolo vazio</li>
+            <li><b>Protocolo divergente</b> número diferente do esperado</li>
+            <li><b>Valor divergente</b> valor protocolado ≠ registrado</li>
+            <li><b>Em processamento</b> tudo confere, pagamento pendente</li>
+            <li><b>Concluído</b> tudo confere e pago</li>
+          </ol>
+          <div class="trial">
+            <p class="mono lbl">Teste a regra</p>
+            <div class="trial__g">
+              <label class="field">Valor registrado<input id="t-reg" type="number" min="0" step="100" value="12000" inputmode="decimal"></label>
+              <label class="field">Valor protocolado<input id="t-vp" type="number" min="0" step="100" value="12000" inputmode="decimal"></label>
+              <label class="field">Protocolo informado<input id="t-p" value="P-3001" maxlength="12"></label>
+              <label class="field">Protocolo esperado<input id="t-pe" value="P-3001" maxlength="12"></label>
+              <label class="check"><input type="checkbox" id="t-pago"> Pagamento confirmado</label>
+            </div>
+            <p class="trial__out">Resultado: <span class="chip" id="t-out">—</span></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="tblwrap" tabindex="0" role="region" aria-label="Conferência de aditivos fictícios">
+            <table class="tbl"><thead><tr><th scope="col">Contrato</th><th scope="col">Termo</th><th scope="col" class="r">Registro</th><th scope="col">Protocolo</th><th scope="col" class="r">Valor prot.</th><th scope="col">Resultado</th></tr></thead><tbody id="ad-body"></tbody></table>
+          </div>
+          <p class="muted small">Resultado: maior controle e rastreabilidade. Um alerta indica onde conferir; a conclusão vem da conferência, não da fórmula.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 prioridades -->
+    <div class="qpanel" role="tabpanel" id="qp5" aria-labelledby="q5" hidden>
+      <div class="qgrid qgrid--r">
+        <div class="card">
+          <h3>Critérios considerados</h3>
+          <p class="muted">Ligue e desligue critérios e veja a ordem mudar. A lista organiza informação para apoiar a definição de prioridades; quem decide é a gestão.</p>
+          <div class="crit" id="crit">
+            <label class="check"><input type="checkbox" value="risco" checked> Risco de insuficiência <span class="mono">peso 4</span></label>
+            <label class="check"><input type="checkbox" value="venc" checked> Proximidade do fim da vigência <span class="mono">peso 3</span></label>
+            <label class="check"><input type="checkbox" value="pend" checked> Pendências de documentação <span class="mono">peso 2</span></label>
+            <label class="check"><input type="checkbox" value="atraso" checked> Pagamentos em atraso <span class="mono">peso 2</span></label>
+          </div>
+        </div>
+        <div class="card">
+          <ol class="prio" id="prio" aria-live="polite"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUTROS SISTEMAS ============ -->
+<section class="sec" id="sistemas" aria-labelledby="t-sis">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="kicker mono">05 · Outros sistemas desenvolvidos</p>
+      <h2 id="t-sis">Cinco soluções independentes, cada uma com suas regras.</h2>
+      <p>Sistemas de controle desenvolvidos em Google Planilhas. Cada um é apresentado pelo problema que resolve, pelo funcionamento, pela estrutura de dados e pelas regras de negócio, com uma demonstração em dados fictícios.</p>
+    </header>
+    <div class="ptabs" role="tablist" aria-label="Sistemas">
+      <button role="tab" id="p-obras" aria-controls="pp-obras" aria-selected="true">Obras e Facilities</button>
+      <button role="tab" id="p-imoveis" aria-controls="pp-imoveis" aria-selected="false" tabindex="-1">Gestão de Imóveis</button>
+      <button role="tab" id="p-frota" aria-controls="pp-frota" aria-selected="false" tabindex="-1">Inteligência de Frota</button>
+      <button role="tab" id="p-estac" aria-controls="pp-estac" aria-selected="false" tabindex="-1">Estacionamento</button>
+      <button role="tab" id="p-precos" aria-controls="pp-precos" aria-selected="false" tabindex="-1">Mapa de Preços</button>
+    </div>
+
+    <article class="ppanel" role="tabpanel" id="pp-obras" aria-labelledby="p-obras">
+      <div class="pdoc">
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>Saber se o saldo de cada contrato chega ao fim da vigência e quando a renovação precisa começar.</dd></div>
+          <div><dt>Como funciona</dt><dd>Calcula o saldo atual e o projetado por ciclo financeiro, separando serviço e material, e sinaliza a janela de renovação.</dd></div>
+          <div><dt>Estrutura de dados</dt><dd>Cadastro do contrato (vigência, empenhos de serviço e material, aditivos) + lançamentos por competência.</dd></div>
+          <div><dt>Indicadores</dt><dd>Saldo atual, saldo projetado, meses cobertos, dias até o término.</dd></div>
+          <div><dt>Regras de negócio</dt><dd>Serviço e material têm saldos separados, para que um não esconda o outro. Renovação sinalizada 120 dias antes do término.</dd></div>
+          <div><dt>Decisão apoiada</dt><dd>Pedir reforço de empenho ou aditivo a tempo, e iniciar a renovação com antecedência.</dd></div>
+        </dl>
+        <div class="pdemo">
+          <p class="mono lbl">Demonstração · CT-058 Climatização (fictício)</p>
+          <div class="seg" role="group" aria-label="Parcela do contrato">
+            <button type="button" class="fbtn3" data-p="serv" aria-pressed="true">Serviço</button>
+            <button type="button" class="fbtn3" data-p="mat" aria-pressed="false">Material</button>
+            <button type="button" class="fbtn3" data-p="tot" aria-pressed="false">Somado</button>
+          </div>
+          <div class="chart" id="ob-chart"></div>
+          <p class="verdict" id="ob-verdict" role="status"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span></span></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="ppanel" role="tabpanel" id="pp-imoveis" aria-labelledby="p-imoveis" hidden>
+      <div class="pdoc">
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>Reunir, por imóvel, todos os compromissos recorrentes e saber o que está pendente e por quê.</dd></div>
+          <div><dt>Como funciona</dt><dd>Organiza despesas por imóvel (aluguel, condomínio, IPTU e taxas), com vencimentos e histórico.</dd></div>
+          <div><dt>Estrutura de dados</dt><dd>Cadastro do imóvel (regime próprio ou locado, contrato) + lançamentos mensais por tipo de despesa.</dd></div>
+          <div><dt>Indicadores</dt><dd>Custo mensal por imóvel, composição da despesa, pendências por tipo.</dd></div>
+          <div><dt>Regras de negócio</dt><dd>Pendência de lançamento (o valor existe e não foi lançado) ≠ pendência de dados (a informação não foi recebida). Campo vazio nunca vira zero.</dd></div>
+          <div><dt>Decisão apoiada</dt><dd>Cobrar a informação certa de quem a detém e priorizar lançamentos.</dd></div>
+        </dl>
+        <div class="pdemo">
+          <p class="mono lbl">Demonstração · imóveis fictícios</p>
+          <div class="tblwrap" tabindex="0" role="region" aria-label="Despesas por imóvel fictício">
+            <table class="tbl tbl--sm"><thead><tr><th scope="col">Imóvel</th><th scope="col" class="r">Aluguel</th><th scope="col" class="r">Cond.</th><th scope="col" class="r">IPTU</th><th scope="col" class="r">Taxas</th><th scope="col">Situação</th></tr></thead><tbody id="im-body"></tbody></table>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="ppanel" role="tabpanel" id="pp-frota" aria-labelledby="p-frota" hidden>
+      <div class="pdoc">
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>Garantir que abastecimentos e quilometragem façam sentido antes de virarem despesa conferida.</dd></div>
+          <div><dt>Como funciona</dt><dd>Valida hodômetro e consumo (km/L) a cada registro e procura abastecimentos repetidos e possíveis duplicidades financeiras.</dd></div>
+          <div><dt>Estrutura de dados</dt><dd>Cadastro de veículos + registros de abastecimento (data, litros, valor, hodômetro) + manutenções preventivas e corretivas.</dd></div>
+          <div><dt>Indicadores</dt><dd>km rodados, consumo médio por veículo, ocorrências de conferência.</dd></div>
+          <div><dt>Regras de negócio</dt><dd>Hodômetro menor que o anterior = leitura a conferir. Mesmo veículo, data, litros e valor = possível duplicidade.</dd></div>
+          <div><dt>Decisão apoiada</dt><dd>Conferir registros suspeitos antes do pagamento e acompanhar o consumo da frota.</dd></div>
+        </dl>
+        <div class="pdemo">
+          <p class="mono lbl">Demonstração · abastecimentos fictícios</p>
+          <div class="tblwrap" tabindex="0" role="region" aria-label="Abastecimentos fictícios">
+            <table class="tbl tbl--sm"><thead><tr><th scope="col">Veículo</th><th scope="col">Data</th><th scope="col" class="r">Litros</th><th scope="col" class="r">Hodôm.</th><th scope="col" class="r">km/L</th><th scope="col">Conferência</th></tr></thead><tbody id="fr-body"></tbody></table>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="ppanel" role="tabpanel" id="pp-estac" aria-labelledby="p-estac" hidden>
+      <div class="pdoc">
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>Acompanhar contratos de estacionamento sem distorcer a previsão de despesa.</dd></div>
+          <div><dt>Como funciona</dt><dd>Controla contratos, vigências, vagas, valores e despesas de cada estacionamento.</dd></div>
+          <div><dt>Estrutura de dados</dt><dd>Cadastro do contrato (vagas, valor global, periodicidade, vigência) + lançamentos.</dd></div>
+          <div><dt>Indicadores</dt><dd>Vagas contratadas, valor global, custo mensal quando a periodicidade é confirmada.</dd></div>
+          <div><dt>Regras de negócio</dt><dd>O valor global só vira mensalidade quando a periodicidade está confirmada. Nenhuma despesa é contada duas vezes.</dd></div>
+          <div><dt>Decisão apoiada</dt><dd>Previsões de despesa confiáveis e comparação de custo por vaga.</dd></div>
+        </dl>
+        <div class="pdemo">
+          <p class="mono lbl">Demonstração · contratos fictícios</p>
+          <div class="tblwrap" tabindex="0" role="region" aria-label="Estacionamentos fictícios">
+            <table class="tbl tbl--sm"><thead><tr><th scope="col">Contrato</th><th scope="col" class="r">Vagas</th><th scope="col" class="r">Valor global</th><th scope="col">Periodicidade</th><th scope="col" class="r">Mensal</th></tr></thead><tbody id="es-body"></tbody></table>
+          </div>
+          <p class="muted small">Quando a periodicidade não está confirmada, o sistema mostra “—” em vez de presumir uma mensalidade.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="ppanel" role="tabpanel" id="pp-precos" aria-labelledby="p-precos" hidden>
+      <div class="pdoc">
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>Consolidar referências de várias fontes em uma estimativa de preço defensável.</dd></div>
+          <div><dt>Como funciona</dt><dd>Compara propostas e referências de mercado por item, calculando média e mediana.</dd></div>
+          <div><dt>Estrutura de dados</dt><dd>Itens × fontes (propostas, painéis públicos, contratações similares), com valor por fonte.</dd></div>
+          <div><dt>Indicadores</dt><dd>Média, mediana, quantidade de fontes válidas, dispersão.</dd></div>
+          <div><dt>Regras de negócio</dt><dd>Proposta incompleta (sem valor) fica fora do cálculo, sem virar zero; o número de fontes válidas é sempre exibido.</dd></div>
+          <div><dt>Decisão apoiada</dt><dd>Escolher o critério de referência com transparência sobre as fontes usadas.</dd></div>
+        </dl>
+        <div class="pdemo">
+          <p class="mono lbl">Demonstração · edite os valores (deixe vazio para simular proposta incompleta)</p>
+          <div class="prices" id="pr-list"></div>
+          <div class="kpis3 kpis3--tight">
+            <div class="kpi"><span>Média</span><strong class="mono" id="pr-media">—</strong></div>
+            <div class="kpi"><span>Mediana</span><strong class="mono" id="pr-mediana">—</strong></div>
+            <div class="kpi"><span>Fontes válidas</span><strong class="mono" id="pr-n">—</strong></div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ ARQUITETURA ============ -->
+<section class="sec" id="arquitetura" aria-labelledby="t-arq">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="kicker mono">06 · Arquitetura de dados e automação</p>
+      <h2 id="t-arq">Sistemas em camadas: registro, regras e visualização separados.</h2>
+      <p>Separar registros operacionais, regras de negócio e visualização gerencial deixa cada parte mais fácil de conferir, corrigir e evoluir.</p>
+    </header>
+
+    <div class="arch">
+      <svg class="arch__svg" viewBox="0 0 960 270" role="img" aria-labelledby="arch-t arch-d">
+        <title id="arch-t">Diagrama da arquitetura de dados</title>
+        <desc id="arch-d">Planilhas operacionais e bases auxiliares alimentam, por IMPORTRANGE, a camada de tratamento com fórmulas avançadas. Ela abastece os painéis gerenciais, que são publicados na aplicação web em Apps Script. A aplicação devolve justificativas por sincronização e exporta relatórios em PDF.</desc>
+        <g class="arch__links">
+          <path id="lk1" d="M180 80 C250 80 260 150 330 150"/>
+          <path id="lk2" d="M180 220 C250 220 260 150 330 150"/>
+          <path id="lk3" d="M500 150 L580 150"/>
+          <path id="lk4" d="M750 150 C790 150 790 80 820 80"/>
+          <path id="lk5" d="M750 150 C790 150 790 220 820 220"/>
+          <path id="lk6" class="back" d="M880 50 C880 6 100 6 100 50"/>
+        </g>
+        <g class="arch__dots">
+          <circle r="4"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#lk1"/></animateMotion></circle>
+          <circle r="4"><animateMotion dur="3.6s" begin="1s" repeatCount="indefinite"><mpath href="#lk2"/></animateMotion></circle>
+          <circle r="4"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#lk3"/></animateMotion></circle>
+          <circle r="4"><animateMotion dur="2.8s" begin=".5s" repeatCount="indefinite"><mpath href="#lk4"/></animateMotion></circle>
+          <circle r="4"><animateMotion dur="2.8s" begin="1.4s" repeatCount="indefinite"><mpath href="#lk5"/></animateMotion></circle>
+          <circle r="4" class="back"><animateMotion dur="4.4s" repeatCount="indefinite"><mpath href="#lk6"/></animateMotion></circle>
+        </g>
+        <g class="arch__nodes">
+          <g transform="translate(20 50)"><rect width="160" height="60" rx="10"/><text x="16" y="26">Planilhas</text><text x="16" y="44" class="s">operacionais</text></g>
+          <g transform="translate(20 190)"><rect width="160" height="60" rx="10"/><text x="16" y="26">Bases</text><text x="16" y="44" class="s">auxiliares</text></g>
+          <text x="210" y="138" class="tag">IMPORTRANGE</text>
+          <g transform="translate(330 110)" class="hl"><rect width="170" height="80" rx="10"/><text x="16" y="30">Tratamento</text><text x="16" y="50" class="s">fórmulas avançadas</text><text x="16" y="66" class="s">regras de validação</text></g>
+          <g transform="translate(580 110)"><rect width="170" height="80" rx="10"/><text x="16" y="30">Painéis</text><text x="16" y="50" class="s">gerenciais</text><text x="16" y="66" class="s">filtros e relatórios</text></g>
+          <g transform="translate(820 50)"><rect width="120" height="60" rx="10"/><text x="14" y="26">Aplicação</text><text x="14" y="44" class="s">Apps Script</text></g>
+          <g transform="translate(820 190)"><rect width="120" height="60" rx="10"/><text x="14" y="26">Relatórios</text><text x="14" y="44" class="s">em PDF</text></g>
+          <text x="380" y="22" class="tag">sincronização de justificativas → base operacional</text>
+        </g>
+      </svg>
+    </div>
+
+    <ol class="flow mono" aria-label="Fluxo da informação">
+      <li>Entrada de dados</li><li>Validação</li><li>Tratamento</li><li>Consolidação</li><li>Análise</li><li>Visualização</li><li class="end">Decisão</li>
+    </ol>
+
+    <div class="archcards">
+      <article class="card"><h3>Integração entre arquivos</h3><p>Arquivos operacionais e bases auxiliares conectados por IMPORTRANGE, com um caminho único de ida dos dados.</p></article>
+      <article class="card"><h3>Fórmulas e regras</h3><p>Fórmulas avançadas concentram as regras de negócio em uma camada própria, separada da digitação e da apresentação.</p></article>
+      <article class="card"><h3>Google Apps Script</h3><p>Aplicação web, sincronização de justificativas por gatilho de tempo ou manual, exportação em PDF e um instalador que restaura fórmulas a partir de um manifesto.</p></article>
+    </div>
+
+    <h3 class="sub">Princípios que estão em todos os meus controles</h3>
+    <div class="pairs">
+      <div class="pair"><p><span>Vazio</span><b aria-label="não é">≠</b><span>Zero</span></p><small>A falta de informação continua sendo falta de informação.</small></div>
+      <div class="pair"><p><span>Lançado</span><b aria-label="não é">≠</b><span>Pago</span></p><small>Um registro mostra o lançamento; a quitação depende de confirmação.</small></div>
+      <div class="pair"><p><span>Alerta</span><b aria-label="não é">≠</b><span>Irregularidade</span></p><small>Uma ocorrência aponta onde olhar; a conclusão vem da conferência.</small></div>
+      <div class="pair"><p><span>Vigência</span><b aria-label="não é">≠</b><span>Vencimento</span></p><small>Prazo do contrato e data de pagamento são controles diferentes.</small></div>
+      <div class="pair"><p><span>Valor global</span><b aria-label="não é">≠</b><span>Mensalidade</span></p><small>A periodicidade é confirmada, nunca presumida.</small></div>
+      <div class="pair"><p><span>Conectado</span><b aria-label="não é">≠</b><span>Atualizado</span></p><small>Uma conexão ativa não garante recálculo; verifico de ponta a ponta.</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAJETÓRIA ============ -->
+<section class="sec" id="trajetoria" aria-labelledby="t-traj">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="kicker mono">07 · Minha trajetória</p>
+      <h2 id="t-traj">Experiência no setor público e na iniciativa privada.</h2>
+    </header>
+    <ol class="timeline">
+      <li class="job">
+        <time class="mono">jun/2026 — atual</time>
+        <div><h3>Auxiliar de Escritório</h3><p class="org">CREA-RJ · setor público</p>
+          <p>Atuação na área administrativa, com experiência em:</p>
+          <ul class="dots">
+            <li>Acompanhamento e organização de atividades administrativas.</li>
+            <li>Apoio à gestão e ao controle de processos.</li>
+            <li>Organização e análise de informações gerenciais.</li>
+            <li>Elaboração e manutenção de controles administrativos.</li>
+            <li>Acompanhamento de prazos, documentos e demandas.</li>
+            <li>Estruturação de planilhas e ferramentas de apoio à gestão.</li>
+            <li>Desenvolvimento de soluções para melhorar a organização e a visualização de informações.</li>
+            <li>Utilização de recursos tecnológicos para automatizar tarefas e otimizar rotinas.</li>
+            <li>Elaboração de relatórios e acompanhamento de indicadores.</li>
+          </ul></div>
+      </li>
+      <li class="job">
+        <time class="mono">ago/2025 — jun/2026</time>
+        <div><h3>Estagiário Administrativo em Licitações e Contratos</h3><p class="org">CREA-RJ · setor público</p>
+          <p>Pesquisa de preços, análise de referências de mercado, apoio à elaboração de estimativas e à análise de editais e termos de referência.</p></div>
+      </li>
+      <li class="job">
+        <time class="mono">2023 — 2025</time>
+        <div><h3>Estagiário Administrativo em Perícia Médica</h3><p class="org">INSS · setor público</p>
+          <p>Abertura, instrução e tramitação de processos administrativos no SEI, organização documental e apoio a processos de benefícios.</p></div>
+      </li>
+      <li class="job">
+        <time class="mono">jan/2020 — jan/2021</time>
+        <div><h3>Auxiliar Administrativo</h3><p class="org">ECONIT Engenharia Ambiental</p>
+          <p>Controle de folhas de ponto, benefícios, documentação de colaboradores e apoio a recrutamento.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FORMAÇÃO + FERRAMENTAS ============ -->
+<section class="sec" id="formacao" aria-labelledby="t-form">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="kicker mono">08 · Formação e qualificações</p>
+      <h2 id="t-form">Base em administração, contratações públicas e tecnologia.</h2>
+    </header>
+    <div class="edu">
+      <div class="card">
+        <h3>Formação acadêmica</h3>
+        <ul class="list">
+          <li><b>Bacharelado em Administração</b><span class="mono">UNIFATECIE · em andamento · previsão jun/2028</span></li>
+          <li><b>Tecnólogo em Gestão de Serviços Judiciais</b><span class="mono">Gran Centro Universitário · em andamento · previsão mai/2028</span></li>
+          <li><b>Técnico em Administração</b><span class="mono">SENAI · concluído em 2021</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Cursos selecionados</h3>
+        <ul class="list list--hours">
+          <li><b>Gestão Estratégica e Contratos</b><span class="mono">Escola Virtual.Gov</span><em class="mono">365 h</em></li>
+          <li><b>Licitações e Contratos Administrativos</b><span class="mono">ENAP</span><em class="mono">40 h</em></li>
+          <li><b>Direito Administrativo</b><span class="mono">ENAP</span><em class="mono">40 h</em></li>
+          <li><b>Termos de Referência na Nova Lei de Licitações</b><span class="mono">ENAP</span><em class="mono">20 h</em></li>
+          <li><b>Nova Lei de Licitações e Contratos</b><span class="mono">Udemy</span><em class="mono">15 h</em></li>
+          <li><b>Engenharia de Prompt</b><span class="mono">Gran Faculdade</span><em class="mono">30 h</em></li>
+          <li><b>Agentes Inteligentes</b><span class="mono">Gran Faculdade</span><em class="mono">30 h</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub" id="competencias">Ferramentas e competências</h3>
+    <div class="tools">
+      <div class="tool"><h4 class="mono">Dados e automação</h4><ul><li>Google Planilhas</li><li>Microsoft Excel</li><li>Google Apps Script</li><li>IMPORTRANGE</li><li>Fórmulas avançadas</li><li>Modelagem de dados</li><li>Automação de processos</li></ul></div>
+      <div class="tool"><h4 class="mono">Gestão e administração</h4><ul><li>Gestão de contratos</li><li>Contas a pagar</li><li>Controle de vigências</li><li>Gestão documental</li><li>Controle orçamentário</li><li>Pesquisa de preços</li><li>Processos administrativos</li></ul></div>
+      <div class="tool"><h4 class="mono">Sistemas e plataformas</h4><ul><li>SEI</li><li>PNCP</li><li>Compras.gov.br</li><li>Banco de Preços</li><li>Sistemas de gestão financeira</li><li>Microsoft Word</li></ul></div>
+      <div class="tool"><h4 class="mono">Inteligência artificial</h4><ul><li>Engenharia de prompt</li><li>IA generativa aplicada à rotina</li><li>Agentes inteligentes</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="sec" id="contato" aria-labelledby="t-cont">
+  <div class="wrap">
+    <div class="cta">
+      <p class="kicker mono">Contato</p>
+      <h2 id="t-cont">Tem uma rotina que vive de planilha solta?</h2>
+      <p>Vamos conversar sobre oportunidades, processos, contratos ou aquele controle que ninguém consegue manter atualizado.</p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="mailto:kleytons67@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>kleytons67@gmail.com</a>
+        <button class="btn btn--ghost" type="button" data-copy="kleytons67@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar e-mail</span></button>
+        <a class="btn btn--ghost" href="https://www.linkedin.com/in/kleyton-gon%C3%A7alves-silva/" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg>LinkedIn</a>
+        <a class="btn btn--ghost" href="curriculo.html"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Currículo completo</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <p>Kleyton Gonçalves Silva · Niterói, RJ</p>
+    <p class="mono">Todas as demonstrações usam dados fictícios. Nenhum dado institucional é exibido.</p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
 <div class="toast" id="toast" role="status" aria-live="polite"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span></span></div>
-<script src="assets/v4.js" defer></script>
+<script src="assets/data.js" defer></script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
