@@ -1,40 +1,41 @@
-# Kleyton Gonçalves — portfólio e currículo
+# Kleyton Gonçalves Silva · portfólio e currículo
 
-Site estático (HTML, CSS e JavaScript puros, sem build) publicado no Netlify em <https://kleyton-adm.netlify.app>.
+Site estático (HTML, CSS e JavaScript puros, sem build), compatível com GitHub Pages: <https://kleytongoncalves-adm.github.io/Portef-lio-/>.
 
 ## Páginas
 
 | Arquivo | Conteúdo |
 | --- | --- |
-| `index.html` | Portfólio: painel de contratos com filtros, competências, projetos, laboratório (simuladores de saldo e de renovação), princípios, trajetória, formação e contato |
+| `index.html` | Portfólio: painel de inteligência no topo, frentes de atuação, case principal (arquitetura em 3 camadas), escala, cinco análises interativas, outros sistemas, arquitetura de dados, trajetória, formação e contato |
 | `curriculo.html` | Currículo em formato A4, pronto para "Salvar em PDF / imprimir" |
 
 ## Estrutura
 
 ```
 assets/
-  v4.css   sistema de design único (tokens, componentes, movimento, responsivo, impressão)
-  v4.js    interações (tema, menu, filtros, simuladores, avisos); o conteúdo funciona sem JS
-  og.png   imagem de compartilhamento
-  mark.svg ícone
+  site.css   sistema de design "Dark Data Intelligence" (tokens, componentes, gráficos, responsivo, impressão)
+  site.js    interações e demonstrações (gráficos SVG próprios, abas, filtros, simuladores)
+  data.js    base FICTÍCIA de demonstração (gerador determinístico)
+  og.png     imagem de compartilhamento
+  mark.svg   ícone
 ```
+
+## Confidencialidade
+
+O portfólio mostra o que eu sei fazer, não detalhes de onde ou como executo cada atividade.
+Os projetos são apresentados como iniciativas próprias, com estrutura genérica e **dados fictícios** (`assets/data.js`).
+Não há nomes de sistemas institucionais, valores, contagens, contratos, fornecedores ou processos reais.
 
 ## Decisões de design
 
-- **Um só sistema:** as duas páginas usam os mesmos tokens de cor, elevação, forma e movimento (`:root` em `v4.css`).
-- **Tema claro/escuro:** segue o sistema e pode ser alternado; a escolha fica salva no navegador.
-- **Movimento com função:** entrada suave só do que está abaixo da dobra, transição entre páginas, indicador do menu, números dos simuladores. Respeita `prefers-reduced-motion`.
-- **Acessibilidade:** link "Ir para o conteúdo", foco visível, rótulos nos controles, regiões `aria-live` nos resultados e navegação completa por teclado.
-- **Dados:** todas as demonstrações usam dados fictícios; nada é enviado a servidores.
+- **Tema escuro por padrão**, com alternância para o claro (escolha salva no navegador).
+- **Tipografia:** Space Grotesk (títulos), Inter (texto), IBM Plex Mono (números e metadados).
+- **Gráficos:** SVG desenhados na largura real do contêiner, com dica ao passar o mouse; cores categóricas validadas para daltonismo e legenda sempre presente.
+- **Movimento com função:** entrada ao rolar, contagem progressiva, fluxo de dados. Tudo respeita `prefers-reduced-motion`.
+- **Acessibilidade:** link "Ir para o conteúdo", foco visível, abas com setas do teclado, regiões `aria-live` nos resultados.
 
 ## Rodar localmente
 
-Basta servir a pasta por HTTP, por exemplo:
-
 ```sh
-npx serve .
+python3 -m http.server 8000
 ```
-
-## Publicação
-
-O Netlify publica a branch `main` deste repositório automaticamente.
